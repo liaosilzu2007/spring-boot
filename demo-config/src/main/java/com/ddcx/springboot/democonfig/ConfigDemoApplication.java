@@ -1,4 +1,4 @@
-package com.ddcx.springboot.democonfig.util;
+package com.ddcx.springboot.democonfig;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
