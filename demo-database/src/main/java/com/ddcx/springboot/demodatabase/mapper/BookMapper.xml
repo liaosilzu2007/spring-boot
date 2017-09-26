@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddcx.springboot.BookMapper">
+  <resultMap id="BaseResultMap" type="com.ddcx.springboot.Book">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ddcx.springboot.Book">
+    insert into book (id, name, author, 
+      price)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DOUBLE})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, author, price
+    from book
+  </select>
+</mapper>

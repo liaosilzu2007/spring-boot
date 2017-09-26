@@ -10,7 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>springboot-helloworld</module>
-        <module>config-demo</module>
+        <module>demo-config</module>
+        <module>mybatis-generator</module>
+        <module>demo-database</module>
     </modules>
 
     <parent>
@@ -32,11 +34,8 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
+
     </dependencies>
 
     <build>
