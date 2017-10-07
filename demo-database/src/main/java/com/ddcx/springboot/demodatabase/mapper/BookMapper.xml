@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ddcx.springboot.BookMapper">
-  <resultMap id="BaseResultMap" type="com.ddcx.springboot.Book">
+<mapper namespace="com.ddcx.springboot.demodatabase.mapper.BookMapper">
+  <resultMap id="BaseResultMap" type="Book">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="price" jdbcType="DOUBLE" property="price" />
   </resultMap>
-  <insert id="insert" parameterType="com.ddcx.springboot.Book">
+  <insert id="insert" parameterType="Book">
     insert into book (id, name, author, 
       price)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
@@ -16,5 +16,10 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, author, price
     from book
+  </select>
+  <select id="getById" resultMap="BaseResultMap">
+    select id, name, author, price
+    from book
+    WHERE id = #{id}
   </select>
 </mapper>

@@ -1,7 +1,7 @@
 package com.ddcx.springboot.demodatabase.service;
 
-import com.ddcx.springboot.democonfig.entity.Book;
-import com.ddcx.springboot.democonfig.mapper.BookMapper;
+import com.ddcx.springboot.demodatabase.entity.Book;
+import com.ddcx.springboot.demodatabase.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +18,9 @@ public class BookService {
 
     public List<Book> getAllBooks() {
         return bookMapper.selectAll();
+    }
+
+    public Book getById(Integer id) {
+        return bookMapper.getById(id);
     }
 }

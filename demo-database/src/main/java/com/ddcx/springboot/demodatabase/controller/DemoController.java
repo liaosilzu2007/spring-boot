@@ -1,8 +1,9 @@
 package com.ddcx.springboot.demodatabase.controller;
 
-import com.ddcx.springboot.democonfig.service.BookService;
+import com.ddcx.springboot.demodatabase.service.BookService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,25 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
+    private static Gson gson = new Gson();
+
     @Autowired
     private BookService bookService;
 
-    @Value("${book.name}")
-    private String bookName;
 
-    @Value("${book.author}")
-    private String bookAuthor;
-
-    @Value("${book.publisher}")
-    private String publisher;
-
-    @Value("${book.price}")
-    private String price;
-
-    @RequestMapping("/bookInfo")
-    String bookInfo() {
-        return "bookName-->" + bookName + "\nbookAuthor-->" + bookAuthor +
-                "\npublisher-->" + publisher + "\nprice-->" + price ;
+    @RequestMapping("/getBook/{id}")
+    String bookInfo(@PathVariable("id") Integer id) {
+        return gson.toJson(bookService.getById(id));
     }
 
 }
