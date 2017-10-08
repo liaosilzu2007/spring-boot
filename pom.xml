@@ -13,6 +13,7 @@
         <module>demo-config</module>
         <module>mybatis-generator</module>
         <module>demo-database</module>
+        <module>demo-yaml</module>
     </modules>
 
     <parent>

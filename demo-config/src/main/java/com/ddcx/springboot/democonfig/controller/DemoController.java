@@ -1,5 +1,8 @@
 package com.ddcx.springboot.democonfig.controller;
 
+import com.ddcx.springboot.democonfig.entity.Book;
+import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableAutoConfiguration
 public class DemoController {
+
+    private static Gson gson = new Gson();
+    @Autowired
+    private Book book;
 
     @Value("${book.name}")
     private String bookName;
@@ -30,4 +37,8 @@ public class DemoController {
                 "\npublisher-->" + publisher + "\nprice-->" + price ;
     }
 
+    @RequestMapping("/prefixConfigTest")
+    String prefixConfigTest() {
+        return gson.toJson(book);
+    }
 }
