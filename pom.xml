@@ -12,8 +12,10 @@
         <module>springboot-helloworld</module>
         <module>demo-config</module>
         <module>mybatis-generator</module>
-        <module>demo-database</module>
+        <module>database-mybatis</module>
         <module>demo-yaml</module>
+        <module>external-tomcat</module>
+        <module>cluster-session</module>
     </modules>
 
     <parent>
@@ -29,15 +31,6 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-
-
-    </dependencies>
 
     <build>
         <plugins>
