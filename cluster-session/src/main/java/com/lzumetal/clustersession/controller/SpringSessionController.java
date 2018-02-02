@@ -21,15 +21,15 @@ public class SpringSessionController {
 
     @RequestMapping("/testSession")
     public Map getSession(HttpServletRequest  request, HttpSession session) {
-        String userInfo = (String) session.getAttribute("userInfo");
-        if (userInfo == null) {
-            userInfo = "此用户信息由" + request.getLocalPort() + "端口生成";
-            session.setAttribute("userInfo", userInfo);
+        String info = (String) session.getAttribute("info");
+        if (info == null) {
+            info = "Session中的此条信息由" + request.getLocalPort() + "端口的服务器生成";
+            session.setAttribute("info", info);
         }
         Map<String, Object> resMap = new HashMap<>();
         resMap.put("sessionId", session.getId());
         resMap.put("sessionClass", session.getClass());
-        resMap.put("userInfo", userInfo);
+        resMap.put("info", session.getAttribute("info"));
         return resMap;
     }
 

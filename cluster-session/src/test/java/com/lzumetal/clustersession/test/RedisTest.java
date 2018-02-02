@@ -12,8 +12,8 @@ public class RedisTest {
 
     public static void main(String[] args) {
         Jedis jedis = new Jedis("119.23.246.206", 6379);
+        jedis.auth("123456");
         jedis.select(0);
-        jedis.get("k1");
-
+        System.out.println(jedis.get("k1"));
     }
 }
