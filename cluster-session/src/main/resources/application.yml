@@ -1,6 +1,6 @@
 server:
   context-path: /cluster-session
-  port: 8080
+  port: 8090
 
 spring:
   redis:
