@@ -16,6 +16,7 @@
         <module>demo-yaml</module>
         <module>external-tomcat</module>
         <module>cluster-session</module>
+        <module>schedule</module>
     </modules>
 
     <parent>

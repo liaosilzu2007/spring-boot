@@ -11,5 +11,6 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  */
 @Configuration
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 300)
+//maxInactiveIntervalInSeconds 设置 session 过期时间
 public class RedisSessionConfig {
 }
