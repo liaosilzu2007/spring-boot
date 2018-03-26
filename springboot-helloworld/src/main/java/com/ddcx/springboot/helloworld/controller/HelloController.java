@@ -1,4 +1,4 @@
-package com.ddcx.springboot.helloworld;
+package com.ddcx.springboot.helloworld.controller;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by liaosi on 2017/9/25.
  */
 @RestController
-@EnableAutoConfiguration
 public class HelloController {
 
 
