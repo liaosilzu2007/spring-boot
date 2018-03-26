@@ -1,4 +1,4 @@
-package com.ddcx.springboot.helloworld.controller;
+package com.lzumtal.springboot.helloworld.controller;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;

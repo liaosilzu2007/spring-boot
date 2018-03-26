@@ -25,7 +25,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.ddcx.springboot.helloworld.Application</mainClass>
+                    <mainClass>com.lzumtal.springboot.helloworld.Application</mainClass>
                 </configuration>
             </plugin>
         </plugins>
