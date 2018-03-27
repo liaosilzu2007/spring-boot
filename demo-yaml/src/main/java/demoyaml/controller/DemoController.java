@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by liaosi on 2017/9/26.
  */
 @RestController
-@EnableAutoConfiguration
 public class DemoController {
 
     private static Gson gson = new Gson();
