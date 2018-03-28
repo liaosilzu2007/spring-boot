@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class ScheduleJob {
 
 
-    //@Scheduled(fixedRate = 1000 * 1)
+    @Scheduled(fixedRate = 1000 * 1)
     public void fixedRateTask() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         System.out.println("执行 fixedRate 任务的时间：" + new Date(System.currentTimeMillis()));

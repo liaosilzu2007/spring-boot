@@ -12,17 +12,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScheduleTreadTest {
 
-    @Scheduled(cron = "0/3 * * * * ?")
+    //@Scheduled(cron = "0/3 * * * * ?")
     public void task01() {
         System.out.println(Thread.currentThread().getName() + "----> task01");
     }
 
-    @Scheduled(cron = "0/2 * * * * ?")
+    //@Scheduled(cron = "0/2 * * * * ?")
     public void task02() {
         System.out.println(Thread.currentThread().getName() + "----> task02");
     }
 
-    @Scheduled(cron = "0/3 * * * * ?")
+    //@Scheduled(cron = "0/3 * * * * ?")
     public void task03() {
         System.out.println(Thread.currentThread().getName() + "----> task03");
     }

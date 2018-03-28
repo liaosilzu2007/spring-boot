@@ -1,5 +1,6 @@
 package com.lzumetal.clustersession.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 public class SpringSessionController {
 
 
-    @RequestMapping("/testSession")
+    @GetMapping("/testSession")
     public Map getSession(HttpServletRequest  request, HttpSession session) {
         String info = (String) session.getAttribute("info");
         if (info == null) {
