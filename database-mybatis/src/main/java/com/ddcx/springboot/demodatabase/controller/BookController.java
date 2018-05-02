@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by liaosi on 2017/9/26.
  */
 @RestController
-public class DemoController {
+public class BookController {
 
     private static Gson gson = new Gson();
 
@@ -20,8 +20,13 @@ public class DemoController {
 
 
     @RequestMapping("/getBook/{id}")
-    String bookInfo(@PathVariable("id") Integer id) {
+    public String bookInfo(@PathVariable("id") Integer id) {
         return gson.toJson(bookService.getById(id));
+    }
+
+    @RequestMapping("/allBooks")
+    public String allBooks() {
+        return gson.toJson(bookService.getAllBooks());
     }
 
 }
