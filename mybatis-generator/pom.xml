@@ -6,7 +6,7 @@
 
 
     <artifactId>mybatis-generator</artifactId>
-    <groupId>com.ddcx</groupId>
+    <groupId>com.lzumetal</groupId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 

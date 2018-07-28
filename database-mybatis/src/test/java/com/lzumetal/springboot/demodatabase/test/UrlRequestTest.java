@@ -1,6 +1,6 @@
 package com.lzumetal.springboot.demodatabase.test;
 
-import com.ddcx.springboot.demodatabase.ConfigApplication;
+import com.lzumetal.springboot.demodatabase.StartupApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ConfigApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = StartupApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class UrlRequestTest {
 
 

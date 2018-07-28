@@ -1,6 +1,6 @@
-package com.ddcx.springboot.demodatabase.controller;
+package com.lzumetal.springboot.demodatabase.controller;
 
-import com.ddcx.springboot.demodatabase.service.BookService;
+import com.lzumetal.springboot.demodatabase.service.BookService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

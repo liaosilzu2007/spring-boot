@@ -19,9 +19,9 @@
         </commentGenerator>
         <!-- jdbc连接：配置数据连接信息 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://119.23.246.206:3306/java_test"
+                        connectionURL="jdbc:mysql://192.168.128.1:3306/poi"
                         userId="root"
-                        password="333000">
+                        password="123456">
         </jdbcConnection>
         <!-- java类型解析器 -->
         <javaTypeResolver>
@@ -47,12 +47,11 @@
                              targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <!--  tableName：表名
+        <!-- tableName：表名
               domainObjectName：对象名
               定义哪个表对应的是哪个javaBean
         -->
-        <table tableName="t_crm_area" domainObjectName="Area"/>
-
+        <table tableName="guokao_2017" domainObjectName="Guokao2017"/>
 
     </context>
 </generatorConfiguration>

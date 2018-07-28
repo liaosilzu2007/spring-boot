@@ -1,9 +1,9 @@
 package com.lzumetal.springboot.demodatabase.test;
 
-import com.ddcx.springboot.demodatabase.ConfigApplication;
-import com.ddcx.springboot.demodatabase.controller.BookController;
-import com.ddcx.springboot.demodatabase.entity.Book;
-import com.ddcx.springboot.demodatabase.service.BookService;
+import com.lzumetal.springboot.demodatabase.StartupApplication;
+import com.lzumetal.springboot.demodatabase.controller.BookController;
+import com.lzumetal.springboot.demodatabase.entity.Book;
+import com.lzumetal.springboot.demodatabase.service.BookService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Test;
@@ -24,7 +24,7 @@ NONE — 这是个神奇的配置，跟Mock一样也不提供真实的Servle
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ConfigApplication.class)
+@SpringBootTest(classes = StartupApplication.class)
 public class MainTest {
 
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -47,7 +47,5 @@ public class MainTest {
         String s = bookController.bookInfo(1);
         System.out.println(s);
     }
-
-
 
 }

@@ -1,4 +1,4 @@
-package com.ddcx.springboot.demodatabase.entity;
+package com.lzumetal.springboot.demodatabase.entity;
 
 public class Book {
 

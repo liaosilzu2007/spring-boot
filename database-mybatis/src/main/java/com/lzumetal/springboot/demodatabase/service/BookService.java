@@ -1,7 +1,7 @@
-package com.ddcx.springboot.demodatabase.service;
+package com.lzumetal.springboot.demodatabase.service;
 
-import com.ddcx.springboot.demodatabase.entity.Book;
-import com.ddcx.springboot.demodatabase.mapper.BookMapper;
+import com.lzumetal.springboot.demodatabase.entity.Book;
+import com.lzumetal.springboot.demodatabase.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

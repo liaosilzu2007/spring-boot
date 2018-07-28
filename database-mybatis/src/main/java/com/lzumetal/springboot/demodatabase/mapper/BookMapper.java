@@ -1,7 +1,7 @@
-package com.ddcx.springboot.demodatabase.mapper;
+package com.lzumetal.springboot.demodatabase.mapper;
 
 
-import com.ddcx.springboot.demodatabase.entity.Book;
+import com.lzumetal.springboot.demodatabase.entity.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
