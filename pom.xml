@@ -17,6 +17,7 @@
         <module>external-tomcat</module>
         <module>cluster-session</module>
         <module>schedule</module>
+        <module>metrics</module>
     </modules>
 
     <parent>
