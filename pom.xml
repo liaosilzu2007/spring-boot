@@ -18,6 +18,7 @@
         <module>cluster-session</module>
         <module>schedule</module>
         <module>metrics</module>
+        <module>apidoc</module>
     </modules>
 
     <parent>
