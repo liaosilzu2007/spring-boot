@@ -14,7 +14,14 @@ public class Good {
 
     private BigDecimal price;
 
+    public Good() {
+    }
 
+    public Good(long id, String name, BigDecimal price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 
     public long getId() {
         return id;

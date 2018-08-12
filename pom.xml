@@ -19,6 +19,7 @@
         <module>schedule</module>
         <module>metrics</module>
         <module>apidoc</module>
+        <module>unit-test</module>
     </modules>
 
     <parent>

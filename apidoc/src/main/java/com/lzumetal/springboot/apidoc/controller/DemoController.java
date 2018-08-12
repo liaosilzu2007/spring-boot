@@ -24,7 +24,15 @@ public class DemoController {
      * @apiParam  {number} id  商品的id
      * @apiParam  {number} price  商品的price
      *
+     * @apiSuccess {Good} good 商品
+     * @apiSuccess {number} good.id 商品的id
+     * @apiSuccess {number} good.name 商品的名称
+     * @apiSuccess {number} good.price 商品的价格
      *
+     * @apiError 401 参数错误
+     *
+     * @apiSuccessExample 输入
+     * /testApidoc
      *
      * @return
      */
