@@ -1,8 +1,10 @@
 package com.lzumetal.springboot.apidoc.test;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.lzumetal.springboot.apidoc.BootStrap;
-import com.lzumetal.springboot.apidoc.entity.Good;
+import com.lzumetal.springboot.apidoc.common.ResponseData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.math.BigDecimal;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootStrap.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class MainTest {
+
+    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
     @Autowired
@@ -23,8 +27,11 @@ public class MainTest {
 
     @Test
     public void testRestReq() {
-        Good good = new Good(1, "联想笔记本电脑", new BigDecimal(5000.0));
-        ResponseEntity<String> entity = testRestTemplate.getForEntity("/testApidoc", String.class, good);
-        System.out.println(entity.getBody());
+        MultiValueMap<String, Object> param = new LinkedMultiValueMap<String, Object>();
+        param.add("id", 101);
+        param.add("name", "iphone");
+        param.add("price", 4599.00);
+        ResponseEntity<ResponseData> entity = testRestTemplate.postForEntity("/testApidoc", param, ResponseData.class);
+        System.out.println(gson.toJson(entity.getBody()));
     }
 }

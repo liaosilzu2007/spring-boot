@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "开发技术接口文档",
   "title": "API文档",
-  "url" : "http://localhost:8080/test",
-  "sampleUrl":"http://localhost:8080/test"
+  "url" : "http://localhost:8090/springboot-apidoc",
+  "sampleUrl":"http://localhost:8090/springboot-apidoc"
 }
