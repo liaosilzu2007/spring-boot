@@ -2,6 +2,7 @@ package com.lzumetal.springboot.apidoc.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.lzumetal.springboot.apidoc.common.ResponseData;
 import com.lzumetal.springboot.apidoc.entity.Good;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,25 +16,40 @@ public class DemoController {
 
 
     /**
-     * @api {GET} /testApidoc 测试testApidoc的使用
+     *
+     * @api {POST} /testApidoc 测试testApidoc的使用
      * @apiVersion 1.0.0
      * @apiGroup shop
      * @apiName apidoc测试
+     * @apiParam {String} name  商品的名字
+     * @apiParam {number} id  商品的id
+     * @apiParam {number} [price]  商品的price
      *
-     * @apiParam  {String} name  商品的名字
-     * @apiParam  {number} id  商品的id
-     * @apiParam  {number} price  商品的price
+     * @apiSuccess {boolean} success 请求结果是否成功
+     * @apiSuccess {string} code 响应码
+     * @apiSuccess {string} message 响应信息
+     * @apiSuccess {object} data 响应数据对象
+     * @apiSuccess {string} data.name 商品名称
+     * @apiSuccess {object} data.price 商品价格
+     * @apiSuccessExample 响应示例
+     *
+     * {
+     *  "success": true,
+     *  "code": "200",
+     *  "message": "成功",
+     *  "data": {
+     *      "id": 101,
+     *      "name": "iphone",
+     *      "price": 4599.0
+     *  }
+     * }
      *
      *
-     *
-     * @return
      */
-    @RequestMapping(value = "/testApidoc", method = RequestMethod.GET)
-    public String testApidoc(Good good) {
-        return gson.toJson(good);
+    @RequestMapping(value = "/testApidoc", method = {RequestMethod.POST, RequestMethod.GET})
+    public ResponseData testApidoc(Good good) {
+        return new ResponseData(good);
     }
-
-
 
 
 }
