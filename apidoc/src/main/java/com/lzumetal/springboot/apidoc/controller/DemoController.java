@@ -44,7 +44,9 @@ public class DemoController {
      *  }
      * }
      *
-     *
+     *  安装：npm install apidoc -g
+     *  验证是否安装成功：apidoc -h
+     *  生成文档：apidoc -i ./ -o ./src/main/webapp/WEB-INF/doc
      */
     @RequestMapping(value = "/testApidoc", method = {RequestMethod.POST, RequestMethod.GET})
     public ResponseData testApidoc(Good good) {
