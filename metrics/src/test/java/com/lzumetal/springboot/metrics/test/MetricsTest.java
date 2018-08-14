@@ -43,9 +43,7 @@ public class MetricsTest {
         ConsoleReporter reporter = ConsoleReporter.forRegistry(registry).build();
         reporter.start(3L, TimeUnit.SECONDS);
 
-        registry.register(MetricRegistry.name(MetricsTest.class, "queue", "size"), (Gauge) () -> {
-            return queue.size();
-        });
+        registry.register(MetricRegistry.name(MetricsTest.class, "queue", "size"), (Gauge) () -> queue.size());
 
         TimeUnit.SECONDS.sleep(5L);
 
@@ -61,9 +59,7 @@ public class MetricsTest {
     public void GaugeTest2() throws InterruptedException {
 
 
-        registry.register(MetricRegistry.name(MetricsTest.class, "queue", "size"), (Gauge) () -> {
-            return queue.size();
-        });
+        registry.register(MetricRegistry.name(MetricsTest.class, "queue", "size"), (Gauge) () -> queue.size());
 
         //让监控的数据输出到slf4j的日志
         Slf4jReporter.Builder builder = Slf4jReporter.forRegistry(registry);

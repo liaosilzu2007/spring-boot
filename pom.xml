@@ -20,6 +20,7 @@
         <module>metrics</module>
         <module>apidoc</module>
         <module>unit-test</module>
+        <module>google-zxing</module>
     </modules>
 
     <parent>
