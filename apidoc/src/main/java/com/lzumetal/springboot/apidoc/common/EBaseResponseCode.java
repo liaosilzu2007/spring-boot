@@ -20,7 +20,7 @@ public enum EBaseResponseCode implements ResponseCode {
 	private String code;
 	private String msg;
 
-	private EBaseResponseCode(String code, String msg) {
+	EBaseResponseCode(String code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}

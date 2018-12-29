@@ -145,5 +145,12 @@ public class UrlRequestTest {
         }
     }
 
-
+    @Test
+    public void test() {
+        MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
+        param.add("method", "gotWaitCoupons");
+        param.add("token", "pSDA-0osrMdgq_jQbMJTmBmgDw7BxKs4EmHmAMYFWcg");
+        String result = testRestTemplate.postForObject("http://m.kuaidi100.com/mkt/courier/open/shop/coupon.do", param, String.class);
+        System.err.println(result);
+    }
 }
