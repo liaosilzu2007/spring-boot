@@ -35,7 +35,10 @@
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
         </dependency>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c1ce7c571f04c2219bfe0cf8b8191dd96add035
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
