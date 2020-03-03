@@ -34,7 +34,7 @@ public class ZxingUtil {
             Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
             hints.put(EncodeHintType.MARGIN, 1);
             hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-            BitMatrix bitMatrix = new MultiFormatWriter().encode(contents, bf, 1000, 1000, hints);
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(contents, bf, 1940, 1940, hints);
             FileOutputStream os = new FileOutputStream(file);
             MatrixToImageWriter.writeToStream(bitMatrix, "png", os);
             os.flush();
