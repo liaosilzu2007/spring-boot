@@ -189,7 +189,8 @@ public class AESUtil {
         String decrypt = decrypt(encrypt, secretKey);
         System.out.println("decrypt:" + decrypt);
 
-        System.out.println(new String(text.getBytes()));
-        System.out.println(new String(Base64.decodeBase64(text)));
+        System.out.println("1." + new String(text.getBytes()));
+        System.out.println("2." + new String(Base64.decodeBase64(text)));
+        System.out.println("3." + Base64.encodeBase64String(text.getBytes()));
     }
 }
