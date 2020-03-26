@@ -23,7 +23,8 @@
     </appender>
 
 
-    <logger name="com.lzumetal">
+    <logger name="com.lzumetal" level="ERROR">
+        <appender-ref ref="myAppender"/>
     </logger>
 
     <logger name="com.lzumetal.logback.LogBackDemo" level="INFO" additivity="true">

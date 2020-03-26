@@ -22,6 +22,7 @@
         <module>unit-test</module>
         <module>google-zxing</module>
         <module>im4java</module>
+        <module>actuator</module>
     </modules>
 
     <parent>
