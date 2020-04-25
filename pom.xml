@@ -18,10 +18,10 @@
         <module>cluster-session</module>
         <module>schedule</module>
         <module>metrics</module>
-        <module>apidoc</module>
         <module>unit-test</module>
         <module>google-zxing</module>
         <module>im4java</module>
+        <module>logback</module>
     </modules>
 
     <parent>

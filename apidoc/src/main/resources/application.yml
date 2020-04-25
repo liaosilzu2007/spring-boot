@@ -1,3 +1,0 @@
-server:
-  context-path: /springboot-apidoc
-  port: 8090
