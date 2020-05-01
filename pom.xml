@@ -18,9 +18,11 @@
         <module>cluster-session</module>
         <module>schedule</module>
         <module>metrics</module>
+        <module>apidoc</module>
         <module>unit-test</module>
         <module>google-zxing</module>
         <module>im4java</module>
+        <module>actuator</module>
         <module>logback</module>
         <module>redis</module>
     </modules>
