@@ -12,8 +12,8 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <artifactId>spring-boot</artifactId>
-        <groupId>com.lzumetal</groupId>
+        <groupId>com.lzumetal.springboot</groupId>
+        <artifactId>service-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
