@@ -19,7 +19,6 @@
         <module>demo-config</module>
         <module>database-mybatis</module>
         <module>demo-yaml</module>
-        <module>external-tomcat</module>
         <module>cluster-session</module>
         <module>schedule</module>
         <module>unit-test</module>
@@ -41,6 +40,7 @@
         <lombok.version>1.18.8</lombok.version>
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
     </properties>
 
     <dependencyManagement>
@@ -79,6 +79,12 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot-starter.verion}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot-starter.verion}</version>
                 <scope>test</scope>
@@ -98,6 +104,11 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

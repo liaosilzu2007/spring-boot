@@ -1,18 +1,18 @@
-package com.lzumetal.springboot.tomcat;
+package com.lzumetal.springboot.redis;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * <p>Description: </p>
- *
- * @author: liaosi
- * @date: 2018-02-02
+ * @author liaosi
+ * @date 2020-04-25
  */
 @SpringBootApplication
-public class Application {
+public class RedisMain {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(RedisMain.class, args);
     }
+
 }
