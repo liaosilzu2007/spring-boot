@@ -23,7 +23,7 @@
         <module>schedule</module>
         <module>unit-test</module>
         <module>logback</module>
-        <module>redis</module>
+        <module>redis-lock</module>
         <module>async</module>
         <module>actuator</module>
         <module>admin-server</module>
