@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.redis;
+package com.lzumetal.springboot.redis.lock;
 
 
 import org.springframework.boot.SpringApplication;
@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020-04-25
  */
 @SpringBootApplication
-public class RedisMain {
+public class RedisLockMain {
 
     public static void main(String[] args) {
-        SpringApplication.run(RedisMain.class, args);
+        SpringApplication.run(RedisLockMain.class, args);
     }
 
 }

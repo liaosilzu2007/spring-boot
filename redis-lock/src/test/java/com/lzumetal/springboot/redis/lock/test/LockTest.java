@@ -1,7 +1,7 @@
-package com.lzumetal.springboot.redis.test;
+package com.lzumetal.springboot.redis.lock.test;
 
-import com.lzumetal.springboot.redis.RedisMain;
-import com.lzumetal.springboot.redis.lock.RedisLockUtil;
+import com.lzumetal.springboot.redis.lock.RedisLockMain;
+import com.lzumetal.springboot.redis.lock.util.RedisLockUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2020-06-07
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = RedisMain.class)
+@SpringBootTest(classes = RedisLockMain.class)
 @Slf4j
 public class LockTest {
 

@@ -28,6 +28,7 @@
         <module>actuator</module>
         <module>admin-server</module>
         <module>admin-client</module>
+        <module>redis</module>
     </modules>
 
     <properties>
