@@ -43,18 +43,21 @@ public class LockTest {
     public void testLock() throws InterruptedException {
         final String resource = "ORDER_PAYED";
         String requestId = UUID.randomUUID().toString();
-        boolean lock = redisLockUtil.tryLock(resource, requestId);
-        if (!lock) {
-            log.error("testLock|获取锁失败|end...");
-            return;
-        }
+        boolean lock = false;
         try {
+            lock = redisLockUtil.tryLock(resource, requestId);
+            if (!lock) {
+                log.error("testLock|获取锁失败|end...");
+                return;
+            }
             //业务逻辑处理
             log.info("业务处理开始...");
             TimeUnit.MILLISECONDS.sleep(new Random(3000).nextLong());
             log.info("业务处理完成...");
         } finally {
-            redisLockUtil.unlock(resource, requestId);
+            if (lock) {
+                redisLockUtil.unlock(resource, requestId);
+            }
         }
 
     }
