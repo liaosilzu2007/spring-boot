@@ -30,6 +30,7 @@
         <module>admin-client</module>
         <module>redis</module>
         <module>uitls</module>
+        <module>aop</module>
     </modules>
 
     <properties>
@@ -43,6 +44,7 @@
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
         <commons-lang3.version>3.9</commons-lang3.version>
+        <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -111,6 +113,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- dubbo -->
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-spring-boot-starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
