@@ -64,10 +64,11 @@ public class RedisLockUtil {
     }
 
     /**
-     * 释放锁
+     * 释放锁。此处通过执行lua脚本的方式
      *
-     * 如果使用原生Jedis的话，也是调用eval方法。注意：eval函数在redis集群环境中不支持
+     * 如果使用原生Jedis的话，则是调用eval方法。
      * jedis.eval(script, Collections.singletonList(unlockKey), Collections.singletonList(unlockValue));
+     * 注意：eval函数在redis集群环境中不支持
      *
      * @param unlockKey   redis锁的key。即需要解锁的资源
      * @param unlockValue redis锁的value。不同的客户端不一样
