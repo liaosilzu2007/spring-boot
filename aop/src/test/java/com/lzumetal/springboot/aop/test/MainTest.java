@@ -3,7 +3,6 @@ package com.lzumetal.springboot.aop.test;
 import com.lzumetal.springboot.aop.AopBootStrap;
 import com.lzumetal.springboot.aop.dubbo.OrderInvoker;
 import com.lzumetal.springboot.aop.entity.Order;
-import com.lzumetal.springboot.aop.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +24,7 @@ public class MainTest {
     private OrderInvoker orderInvoker;
 
     @Test
-    public void testQueryOrder() throws ServiceException {
+    public void testQueryOrder() {
         Order order = orderInvoker.queryById(1L);
         log.info("queryOrder|{}", order);
     }

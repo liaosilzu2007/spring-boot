@@ -19,13 +19,13 @@ public class DubboAspect {
 
 
     @Around(value = "execution(public * com.lzumetal.springboot.aop.dubbo.OrderInvoker.*(..))")
-    public Object aroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object aroundAdvice(ProceedingJoinPoint joinPoint) throws ServiceException {
         long start = System.currentTimeMillis();
         String name = joinPoint.getSignature().getName();
         Object proceed;
         try {
             proceed = joinPoint.proceed();
-        } catch (Exception e) {
+        } catch (Throwable e) {
             String errMsg = "服务器错误";
             if (e instanceof OrderServiceException) {
                 errMsg = e.getMessage();
