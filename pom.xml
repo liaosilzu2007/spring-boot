@@ -31,6 +31,7 @@
         <module>redis</module>
         <module>uitls</module>
         <module>aop</module>
+        <module>retry</module>
     </modules>
 
     <properties>
@@ -45,6 +46,8 @@
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
         <commons-lang3.version>3.9</commons-lang3.version>
         <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
+        <spring-retry.version>1.2.4.RELEASE</spring-retry.version>
+        <aspectjweaver.version>1.9.4</aspectjweaver.version>
     </properties>
 
     <dependencyManagement>
@@ -119,6 +122,19 @@
                 <groupId>com.alibaba.boot</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!-- retry -->
+            <dependency>
+                <groupId>org.springframework.retry</groupId>
+                <artifactId>spring-retry</artifactId>
+                <version>${spring-retry.version}</version>
+            </dependency>
+            <!--  Spring Retry使用了AOP -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
