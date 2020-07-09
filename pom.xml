@@ -48,6 +48,7 @@
         <dubbo-spring-boot-starter.version>0.2.0</dubbo-spring-boot-starter.version>
         <spring-retry.version>1.2.4.RELEASE</spring-retry.version>
         <aspectjweaver.version>1.9.4</aspectjweaver.version>
+        <httpclient.version>4.5.3</httpclient.version>
     </properties>
 
     <dependencyManagement>
@@ -135,6 +136,18 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectjweaver.version}</version>
+            </dependency>
+
+            <!--httpclient-->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${httpclient.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
