@@ -15,6 +15,7 @@ public class RetryBootStrap {
     public static void main(String[] args) {
         new SpringApplicationBuilder(RetryBootStrap.class)
                 .registerShutdownHook(true)
+                .build()
                 .run(args);
     }
 
