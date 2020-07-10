@@ -80,7 +80,7 @@ public class HttpConnectionManager {
             }
         }, 5000, 5000, TimeUnit.MILLISECONDS);
 
-        //创建唯一的HttpClient
+        //HttpClient线程安全，创建唯一的HttpClient实例
         HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(cm);
         httpClientBuilder.setKeepAliveStrategy(new DefaultConnectionKeepAliveStrategy() {
             @Override

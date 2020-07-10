@@ -5,7 +5,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -15,7 +16,6 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,16 +33,12 @@ import java.util.Map;
  */
 public class HttpRequest {
 
-    //    private int connectTimeout = 5000;
-//    private int connectionRequestTimeout = 5000;
-//    private int socketTimeout = 5000;
+
     private static final String DEFAULT_CHARSET_NAME = StandardCharsets.UTF_8.name();
     private Map<String, String> headers = new HashMap<>();
     private Map<String, String> params = new HashMap<>();
+    private RequestConfig requestConfig;
 
-    public static HttpRequest create() {
-        return new HttpRequest();
-    }
 
     public HttpRequest addHead(String key, String value) {
         headers.put(key, value);
@@ -76,7 +72,7 @@ public class HttpRequest {
 
 
     private List<NameValuePair> mapToList(Map<String, String> formParams) {
-        List<NameValuePair> resuList = new ArrayList<NameValuePair>();
+        List<NameValuePair> resuList = new ArrayList<>();
         for (Map.Entry<String, String> entry : formParams.entrySet()) {
             resuList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
         }
@@ -87,6 +83,7 @@ public class HttpRequest {
         this.params.putAll(params);
         return get(url);
     }
+
 
     public String get(String url) throws IOException {
         String urlTarget = url;
@@ -103,12 +100,29 @@ public class HttpRequest {
         return executeMethod(method);
     }
 
+    private RequestConfig buildRequestConfig(int connectTimeout, int socketTimeout) {
+        return RequestConfig.custom()
+                .setConnectTimeout(connectTimeout)
+//              .setConnectionRequestTimeout(connectionRequestTimeout)
+                .setSocketTimeout(socketTimeout)
+                .build();
+
+    }
+
+
+    public String post(String url, Map<String, String> params, int connectTimeout, int socketTimeout) throws IOException {
+        this.params.putAll(params);
+        this.requestConfig = buildRequestConfig(connectTimeout, socketTimeout);
+        return post(url);
+    }
+
+
     public String post(String url, Map<String, String> params) throws IOException {
         this.params.putAll(params);
         return post(url);
     }
 
-    public String post(String url) throws IOException {
+    private String post(String url) throws IOException {
         HttpPost method = new HttpPost(url);
         if (headers != null && headers.size() > 0) {
             for (Map.Entry<String, String> entry : headers.entrySet()) {
@@ -119,12 +133,9 @@ public class HttpRequest {
             UrlEncodedFormEntity uefEntity = new UrlEncodedFormEntity(mapToList(params), DEFAULT_CHARSET_NAME);
             method.setEntity(uefEntity);
         }
-//        RequestConfig requestConfig = RequestConfig.custom()
-//                .setConnectTimeout(connectTimeout)
-//                .setConnectionRequestTimeout(connectionRequestTimeout)
-//                .setSocketTimeout(socketTimeout)
-//                .build();
-//        method.setConfig(requestConfig);
+        if (this.requestConfig != null) {
+            method.setConfig(this.requestConfig);
+        }
         return executeMethod(method);
     }
 
@@ -157,22 +168,15 @@ public class HttpRequest {
 
 
     private String executeMethod(HttpUriRequest request) throws IOException {
-        CloseableHttpClient httpClient = HttpConnectionManager.getInst().getHttpClient();
-        // Create a custom response handler
-        ResponseHandler<String> responseHandler = new ResponseHandler<String>() {
-            public String handleResponse(
-                    final HttpResponse response) throws IOException {
-                int status = response.getStatusLine().getStatusCode();
-                if (status == HttpStatus.SC_OK) {
-                    HttpEntity entity = response.getEntity();
-                    return entity != null ? EntityUtils.toString(entity, DEFAULT_CHARSET_NAME) : null;
-                } else {
-                    throw new ClientProtocolException("Unexpected response status: " + status);
-                }
-            }
-
-        };
-        return httpClient.execute(request, responseHandler);
+        HttpClient httpClient = HttpConnectionManager.getInst().getHttpClient();
+        HttpResponse response = httpClient.execute(request);
+        int status = response.getStatusLine().getStatusCode();
+        if (status == HttpStatus.SC_OK) {
+            HttpEntity entity = response.getEntity();
+            return entity != null ? EntityUtils.toString(entity, DEFAULT_CHARSET_NAME) : null;
+        } else {
+            throw new ClientProtocolException("Unexpected response status: " + status);
+        }
     }
 
 
