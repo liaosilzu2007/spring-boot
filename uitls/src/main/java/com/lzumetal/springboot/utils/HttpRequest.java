@@ -103,7 +103,7 @@ public class HttpRequest {
     private RequestConfig buildRequestConfig(int connectTimeout, int socketTimeout) {
         return RequestConfig.custom()
                 .setConnectTimeout(connectTimeout)
-//              .setConnectionRequestTimeout(connectionRequestTimeout)
+                .setConnectionRequestTimeout(1000)
                 .setSocketTimeout(socketTimeout)
                 .build();
 
