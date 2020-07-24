@@ -33,6 +33,10 @@ import java.util.Map;
  */
 public class HttpRequest {
 
+    public static void main(String[] args) {
+        System.out.println(StandardCharsets.UTF_8.name());
+    }
+
 
     private static final String DEFAULT_CHARSET_NAME = StandardCharsets.UTF_8.name();
     private Map<String, String> headers = new HashMap<>();

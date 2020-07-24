@@ -32,6 +32,7 @@
         <module>uitls</module>
         <module>aop</module>
         <module>retry</module>
+        <module>spring</module>
     </modules>
 
     <properties>
