@@ -96,11 +96,6 @@ public class HttpRequest {
             urlTarget = url + "?" + URLEncodedUtils.format(mapToList(params), DEFAULT_CHARSET_NAME);
         }
         HttpGet method = new HttpGet(urlTarget);
-        if (headers != null && headers.size() > 0) {
-            for (Map.Entry<String, String> entry : headers.entrySet()) {
-                method.addHeader(entry.getKey(), entry.getValue());
-            }
-        }
         return executeMethod(method);
     }
 
@@ -128,11 +123,6 @@ public class HttpRequest {
 
     private String post(String url) throws IOException {
         HttpPost method = new HttpPost(url);
-        if (headers != null && headers.size() > 0) {
-            for (Map.Entry<String, String> entry : headers.entrySet()) {
-                method.addHeader(entry.getKey(), entry.getValue());
-            }
-        }
         if (params != null && params.size() > 0) {
             UrlEncodedFormEntity uefEntity = new UrlEncodedFormEntity(mapToList(params), DEFAULT_CHARSET_NAME);
             method.setEntity(uefEntity);
@@ -145,13 +135,8 @@ public class HttpRequest {
 
     public String postJson(String url, String json) throws IOException {
         HttpPost method = new HttpPost(url);
-        if (headers != null && headers.size() > 0) {
-            for (Map.Entry<String, String> entry : headers.entrySet()) {
-                method.addHeader(entry.getKey(), entry.getValue());
-            }
-        }
         method.setEntity(new StringEntity(json, DEFAULT_CHARSET_NAME));
-        method.setHeader("content-type", "application/json");
+        method.setHeader("content-type", ContentType.APPLICATION_JSON.getMimeType());
         return executeMethod(method);
     }
 
@@ -161,7 +146,7 @@ public class HttpRequest {
         MultipartEntityBuilder builder = MultipartEntityBuilder.create()
                 .setCharset(StandardCharsets.UTF_8)
                 .setMode(HttpMultipartMode.BROWSER_COMPATIBLE)//加上此行代码解决返回中文乱码问题
-                .addBinaryBody(fileParamName, multipartFile.getInputStream(), ContentType.MULTIPART_FORM_DATA, multipartFile.getOriginalFilename());// 文件流
+                .addBinaryBody(fileParamName, multipartFile.getBytes(), ContentType.MULTIPART_FORM_DATA, multipartFile.getOriginalFilename());// 文件流
         for (Map.Entry<String, String> e : otherParams.entrySet()) {
             builder.addTextBody(e.getKey(), e.getValue());//表单提交其他参数
         }
@@ -172,6 +157,11 @@ public class HttpRequest {
 
 
     private String executeMethod(HttpUriRequest request) throws IOException {
+        if (this.headers != null && this.headers.size() > 0) {
+            for (Map.Entry<String, String> entry : this.headers.entrySet()) {
+                request.addHeader(entry.getKey(), entry.getValue());
+            }
+        }
         HttpClient httpClient = HttpConnectionManager.getInst().getHttpClient();
         HttpResponse response = httpClient.execute(request);
         int status = response.getStatusLine().getStatusCode();
