@@ -33,6 +33,7 @@
         <module>aop</module>
         <module>retry</module>
         <module>spring</module>
+        <module>redisson-lock</module>
     </modules>
 
     <properties>
@@ -50,6 +51,7 @@
         <spring-retry.version>1.2.4.RELEASE</spring-retry.version>
         <aspectjweaver.version>1.9.4</aspectjweaver.version>
         <httpclient.version>4.5.3</httpclient.version>
+        <redisson-spring-boot-starter.version>3.11.5</redisson-spring-boot-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -149,6 +151,13 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpmime</artifactId>
                 <version>${httpclient.version}</version>
+            </dependency>
+
+            <!-- redisson -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring-boot-starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
