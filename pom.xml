@@ -29,7 +29,7 @@
         <module>admin-server</module>
         <module>admin-client</module>
         <module>redis</module>
-        <module>uitls</module>
+        <module>utils</module>
         <module>aop</module>
         <module>retry</module>
         <module>spring</module>
