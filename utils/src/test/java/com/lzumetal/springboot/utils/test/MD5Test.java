@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.demodatabase.test;
+package com.lzumetal.springboot.utils.test;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

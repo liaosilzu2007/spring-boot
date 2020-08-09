@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.demodatabase.test;
+package com.lzumetal.springboot.utils;
 
 import org.apache.commons.codec.binary.Base64;
 

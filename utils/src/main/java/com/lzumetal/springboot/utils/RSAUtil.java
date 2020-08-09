@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.demodatabase.test;
+package com.lzumetal.springboot.utils;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -14,7 +14,7 @@ import java.security.spec.X509EncodedKeySpec;
  * @author liaosi
  * @date 2020-03-05
  */
-public class RSATest {
+public class RSAUtil {
 
 
     private static KeyFactory keyFactory;

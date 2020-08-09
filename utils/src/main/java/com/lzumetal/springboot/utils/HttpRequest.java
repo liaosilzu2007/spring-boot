@@ -39,8 +39,14 @@ public class HttpRequest {
 
 
     private static final String DEFAULT_CHARSET_NAME = StandardCharsets.UTF_8.name();
+
+    /* 请求头 */
     private Map<String, String> headers = new HashMap<>();
+
+    /* 参数 */
     private Map<String, String> params = new HashMap<>();
+
+    /* http请求配置 */
     private RequestConfig requestConfig;
 
 
@@ -75,13 +81,14 @@ public class HttpRequest {
     }
 
 
-    private List<NameValuePair> mapToList(Map<String, String> formParams) {
+    private List<NameValuePair> mapToNameValuePairList(Map<String, String> formParams) {
         List<NameValuePair> resuList = new ArrayList<>();
         for (Map.Entry<String, String> entry : formParams.entrySet()) {
             resuList.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
         }
         return resuList;
     }
+
 
     public String get(String url, Map<String, String> params) throws IOException {
         this.params.putAll(params);
@@ -93,7 +100,7 @@ public class HttpRequest {
         String urlTarget = url;
         //参数需要拼接
         if (params != null && params.size() > 0) {
-            urlTarget = url + "?" + URLEncodedUtils.format(mapToList(params), DEFAULT_CHARSET_NAME);
+            urlTarget = url + "?" + URLEncodedUtils.format(mapToNameValuePairList(params), DEFAULT_CHARSET_NAME);
         }
         HttpGet method = new HttpGet(urlTarget);
         return executeMethod(method);
@@ -124,7 +131,7 @@ public class HttpRequest {
     private String post(String url) throws IOException {
         HttpPost method = new HttpPost(url);
         if (params != null && params.size() > 0) {
-            UrlEncodedFormEntity uefEntity = new UrlEncodedFormEntity(mapToList(params), DEFAULT_CHARSET_NAME);
+            UrlEncodedFormEntity uefEntity = new UrlEncodedFormEntity(mapToNameValuePairList(params), DEFAULT_CHARSET_NAME);
             method.setEntity(uefEntity);
         }
         if (this.requestConfig != null) {
