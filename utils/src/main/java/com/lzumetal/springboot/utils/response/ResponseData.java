@@ -19,7 +19,7 @@ public class ResponseData implements Serializable {
 
     private String message;
 
-    private Serializable data;
+    private Object data;
 
     public ResponseData() {
     }
@@ -34,14 +34,14 @@ public class ResponseData implements Serializable {
         this.message = message;
     }
 
-    private ResponseData(int code, String message, Serializable data) {
+    private ResponseData(int code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
 
-    public static ResponseData data(Serializable data) {
+    public static ResponseData data(Object data) {
         return new ResponseData(200, "请求成功", data);
     }
 
