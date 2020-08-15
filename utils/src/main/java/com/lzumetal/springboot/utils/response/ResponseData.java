@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @author liaosi
@@ -46,8 +47,13 @@ public class ResponseData implements Serializable {
     }
 
 
+    public static ResponseData success() {
+        return new ResponseData(200, "请求成功", null);
+    }
+
+
     public static void main(String[] args) {
-        ResponseData data = ResponseData.data(4);
+        ResponseData data = ResponseData.data(new ArrayList<>());
         System.out.println(data);
     }
 

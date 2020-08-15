@@ -25,6 +25,7 @@ public class PageBean<E extends Serializable> implements Serializable {
         this.data = data;
     }
 
+
     public PageBean(Iterable<E> data) {
         if (data != null) {
             long i = 0;
