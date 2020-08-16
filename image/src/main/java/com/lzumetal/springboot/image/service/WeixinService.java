@@ -7,6 +7,7 @@ import com.lzumetal.springboot.redisson.enums.ERedisKey;
 import com.lzumetal.springboot.redisson.lock.RedissonLockUtil;
 import com.lzumetal.springboot.utils.HttpRequest;
 import com.lzumetal.springboot.utils.common.ServiceException;
+import com.lzumetal.springboot.utils.response.EBaseResponseCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -69,7 +73,7 @@ public class WeixinService {
             String accessToken = this.getAndCacheAccessToken(appid, secret);
             if (StringUtils.isEmpty(accessToken)) {
                 log.error("获取微信access token|FAIL|appid={},secret={}", appid, secret);
-                throw new ServiceException(EBaseRespException.C500.code(), EBaseRespException.C500.msg());
+                throw new ServiceException(EBaseResponseCode.C500.getCode(), EBaseResponseCode.C500.getMessage());
             }
             String url = MSG_CHECK_URL.replace("{access_token}", accessToken);
             JSONObject params = new JSONObject();
@@ -90,7 +94,7 @@ public class WeixinService {
             }
             return false;
         } catch (IOException e) {
-            throw new ServiceException(EBaseRespException.C500.code(), EBaseRespException.C500.msg());
+            throw new ServiceException(EBaseResponseCode.C500);
         }
     }
 
@@ -109,7 +113,7 @@ public class WeixinService {
             String accessToken = this.getAndCacheAccessToken(appid, secret);
             if (StringUtils.isEmpty(accessToken)) {
                 log.error("获取微信access token|FAIL|appid={},secret={}", appid, secret);
-                throw new ServiceException(EBaseRespException.C500.code(), EBaseRespException.C500.msg());
+                throw new ServiceException(EBaseResponseCode.C500);
             }
             String url = IMAGE_CHECK_URL.replace("{access_token}", accessToken);
             String resp;
@@ -131,7 +135,7 @@ public class WeixinService {
             }
             return false;
         } catch (IOException e) {
-            throw new ServiceException(EBaseRespException.C500.code(), EBaseRespException.C500.msg());
+            throw new ServiceException(EBaseResponseCode.C500);
         }
     }
 
@@ -141,7 +145,7 @@ public class WeixinService {
             String accessToken = this.getAndCacheAccessToken(appid, secret);
             if (StringUtils.isEmpty(accessToken)) {
                 log.error("获取微信access token|FAIL|appid={},secret={}", appid, secret);
-                throw new ServiceException(EBaseRespException.C500.code(), EBaseRespException.C500.msg());
+                throw new ServiceException(EBaseResponseCode.C500);
             }
             String url = IMAGE_CHECK_URL.replace("{access_token}", accessToken);
             String resp;
@@ -163,7 +167,7 @@ public class WeixinService {
             }
             return false;
         } catch (IOException e) {
-            throw new ServiceException(EBaseRespException.C500.code(), EBaseRespException.C500.msg());
+            throw new ServiceException(EBaseResponseCode.C500);
         }
     }
 
@@ -212,7 +216,7 @@ public class WeixinService {
             lock = redissonLockUtil.tryLock(lockKey, 10);
             if (!lock) {
                 log.error("获取微信access token|FAIL|获取锁失败|appid={}", appid);
-                throw new ServiceException(EBaseRespException.C500.code(), EBaseRespException.C500.msg());
+                throw new ServiceException(EBaseResponseCode.C500);
             }
             //在锁的内部再从redis中获取一次
             value = ops.get();

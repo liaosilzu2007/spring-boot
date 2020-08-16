@@ -3,6 +3,7 @@ package com.lzumetal.springboot.image.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lzumetal.springboot.image.entity.dto.UploadImageDTO;
 import com.lzumetal.springboot.image.service.FileUploadService;
+import com.lzumetal.springboot.utils.response.EBaseResponseCode;
 import com.lzumetal.springboot.utils.response.PageBean;
 import com.lzumetal.springboot.utils.response.ResponseData;
 import com.lzumetal.springboot.utils.common.ServiceException;
@@ -128,7 +129,7 @@ public class ImageFileController {
             urls.add(url);
         }
         if (urls.isEmpty()) {
-            throw new ServiceException(EBaseRespException.C500.code(), "服务器异常,上传失败");
+            throw new ServiceException(EBaseResponseCode.C500.getCode(), "服务器异常,上传失败");
         }
         return ResponseData.data(new PageBean<>(urls));
     }
@@ -150,7 +151,7 @@ public class ImageFileController {
         BufferedImage image = ImageIO.read(imageFile.getInputStream());
         if (image == null) {
             //如果image=null 表示上传的不是图片格式
-            throw new ServiceException(EBaseRespException.C401.code(), "图片格式异常");
+            throw new ServiceException(EBaseResponseCode.C401.getCode(), "图片格式异常");
         }
 //
 //        if (image.getWidth() > 750 || image.getHeight() > 1334) {  //判断图片像素尺寸是否在范围内
