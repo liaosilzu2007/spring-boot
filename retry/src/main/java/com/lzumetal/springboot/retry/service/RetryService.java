@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 /**
+ * 重试服务类
+ *
  * @author liaosi
  * @date 2020-07-08
  */

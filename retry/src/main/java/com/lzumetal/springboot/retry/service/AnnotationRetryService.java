@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 /**
+ * 使用注解方式的重试服务类
+ *
  * @author liaosi
  * @date 2020-07-08
  */
@@ -17,6 +19,7 @@ import java.util.Random;
 public class AnnotationRetryService {
 
 
+    //@Async    //可以把重试任务提交到一个异步线程池中进行
     @Retryable(value = Exception.class, maxAttempts = 5, backoff = @Backoff(delay = 500L))
     public void cancelThirdOrder(long orderId) {
         log.info("重试取消第三方订单|START|orderId={}", orderId);
