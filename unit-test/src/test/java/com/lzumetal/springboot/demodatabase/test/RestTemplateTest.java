@@ -1,7 +1,5 @@
 package com.lzumetal.springboot.demodatabase.test;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.lzumetal.springboot.demodatabase.StartupApplication;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
@@ -24,10 +22,8 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StartupApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles(value = "dev")
-public class UrlRequestTest {
+public class RestTemplateTest {
 
-
-    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Autowired
     private TestRestTemplate testRestTemplate;
@@ -147,12 +143,5 @@ public class UrlRequestTest {
         }
     }
 
-    @Test
-    public void test() {
-        MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
-        param.add("method", "gotWaitCoupons");
-        param.add("token", "pSDA-0osrMdgq_jQbMJTmBmgDw7BxKs4EmHmAMYFWcg");
-        String result = testRestTemplate.postForObject("http://m.kuaidi100.com/mkt/courier/open/shop/coupon.do", param, String.class);
-        System.err.println(result);
-    }
+
 }

@@ -15,6 +15,13 @@ public class BigDecimalUtil {
         System.out.println(b.stripTrailingZeros());     //3.68E-8
         System.out.println(b.stripTrailingZeros().toPlainString());     //0.0000000368
         System.out.println(b.stripTrailingZeros().scale());     //10
+
+        String costPrice = "150";
+        String costPriceYuan = new BigDecimal(costPrice)
+                .divide(new BigDecimal(100), 2, BigDecimal.ROUND_HALF_UP)
+                .stripTrailingZeros()
+                .toPlainString();
+        System.out.println(costPriceYuan);
     }
 
 
