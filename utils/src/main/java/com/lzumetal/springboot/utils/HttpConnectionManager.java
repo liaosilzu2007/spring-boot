@@ -32,10 +32,10 @@ public class HttpConnectionManager {
     private static final int CONNECT_TIMEOUT = 2000;
 
     /* 从连接池获取连接的超时时间*/
-    private static final int CONNECTION_REQUESTT_IMEOUT = 1000;
+    private static final int CONNECTION_REQUESTT_IMEOUT = 2000;
 
     /* 客户端从服务器读取数据的超时时间 */
-    private static final int SOCKET_TIMEOUT = 15000;
+    private static final int SOCKET_TIMEOUT = 10000;
 
     private PoolingHttpClientConnectionManager cm;
 
@@ -63,6 +63,28 @@ public class HttpConnectionManager {
         cm.setMaxTotal(500);// 每个主机的最大并行链接数
         cm.setDefaultMaxPerRoute(3000);// 客户端总并行链接最大数
 
+        //HttpClient线程安全，创建唯一的HttpClient实例
+        HttpClientBuilder httpClientBuilder = HttpClients.custom();
+        httpClientBuilder.setConnectionManager(cm);
+        httpClientBuilder.setKeepAliveStrategy(new DefaultConnectionKeepAliveStrategy() {
+            @Override
+            public long getKeepAliveDuration(HttpResponse response, HttpContext context) {
+                long keepAlive = super.getKeepAliveDuration(response, context);
+                if (keepAlive == -1) {
+                    // 如果keep-alive值没有由服务器明确设置，那么保持连接持续5秒。
+                    keepAlive = 5000;
+                }
+                return keepAlive;
+            }
+        });
+
+        httpClientBuilder.setDefaultRequestConfig(RequestConfig.custom()
+                .setSocketTimeout(SOCKET_TIMEOUT)
+                .setConnectTimeout(CONNECT_TIMEOUT)
+                .setConnectionRequestTimeout(CONNECTION_REQUESTT_IMEOUT)
+                .build());
+        httpClient = httpClientBuilder.build();
+
         //开启一个线程，定期清理连接，每隔5秒清理一次
         ScheduledExecutorService monitorExecutor = Executors.newSingleThreadScheduledExecutor();
         monitorExecutor.scheduleAtFixedRate(new TimerTask() {
@@ -80,29 +102,8 @@ public class HttpConnectionManager {
             }
         }, 5000, 5000, TimeUnit.MILLISECONDS);
 
-        //HttpClient线程安全，创建唯一的HttpClient实例
-        HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(cm);
-        httpClientBuilder.setKeepAliveStrategy(new DefaultConnectionKeepAliveStrategy() {
-            @Override
-            public long getKeepAliveDuration(HttpResponse response, HttpContext context) {
-                long keepAlive = super.getKeepAliveDuration(response, context);
-                if (keepAlive == -1) {
-                    // 如果keep-alive值没有由服务器明确设置，那么保持连接持续5秒。
-                    keepAlive = 5000;
-                }
-                return keepAlive;
-            }
-        });
-
-        RequestConfig defaultRequestConfig = RequestConfig.custom()
-                .setSocketTimeout(SOCKET_TIMEOUT)
-                .setConnectTimeout(CONNECT_TIMEOUT)
-                .setConnectionRequestTimeout(CONNECTION_REQUESTT_IMEOUT)
-                .build();
-        httpClient = httpClientBuilder
-                .setDefaultRequestConfig(defaultRequestConfig)
-                .build();
     }
+
 
     CloseableHttpClient getHttpClient() {
         return httpClient;

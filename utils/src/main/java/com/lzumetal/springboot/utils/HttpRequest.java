@@ -163,6 +163,27 @@ public class HttpRequest {
     }
 
 
+
+    public String postByte(String url, String fileParamName, byte[] fileBytes, String originalFilename, Map<String, String> otherParams) throws IOException {
+        HttpPost method = new HttpPost(url);
+        MultipartEntityBuilder builder = MultipartEntityBuilder.create()
+                .setCharset(StandardCharsets.UTF_8)
+                .setMode(HttpMultipartMode.BROWSER_COMPATIBLE)//加上此行代码解决返回中文乱码问题
+                .addBinaryBody(fileParamName, fileBytes, ContentType.MULTIPART_FORM_DATA, originalFilename);// 文件流
+        for (Map.Entry<String, String> e : otherParams.entrySet()) {
+            builder.addTextBody(e.getKey(), e.getValue());//表单提交其他参数
+        }
+        if (headers != null && headers.size() > 0) {
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                method.addHeader(entry.getKey(), entry.getValue());
+            }
+        }
+        HttpEntity entity = builder.build();
+        method.setEntity(entity);
+        return executeMethod(method);
+    }
+
+
     private String executeMethod(HttpUriRequest request) throws IOException {
         if (this.headers != null && this.headers.size() > 0) {
             for (Map.Entry<String, String> entry : this.headers.entrySet()) {
@@ -176,6 +197,8 @@ public class HttpRequest {
             HttpEntity entity = response.getEntity();
             return entity != null ? EntityUtils.toString(entity, DEFAULT_CHARSET_NAME) : null;
         } else {
+            //状态不是200的时候reponse的流也要消费一下，否则连接不会返回连接池，导致连接泄露
+            EntityUtils.consumeQuietly(response.getEntity());
             throw new ClientProtocolException("Unexpected response status: " + status);
         }
     }
