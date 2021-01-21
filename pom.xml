@@ -36,6 +36,7 @@
         <module>redisson-lock</module>
         <module>http</module>
         <module>image</module>
+        <module>filter</module>
     </modules>
 
     <properties>

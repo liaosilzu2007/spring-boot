@@ -22,6 +22,9 @@ public class BigDecimalUtil {
                 .stripTrailingZeros()
                 .toPlainString();
         System.out.println(costPriceYuan);
+
+        BigDecimal a = new BigDecimal("0.30");
+        System.out.println(a.stripTrailingZeros());
     }
 
 
