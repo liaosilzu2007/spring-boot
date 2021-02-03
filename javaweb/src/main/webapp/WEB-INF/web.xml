@@ -1,0 +1,36 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+
+  <!-- 注册Filter -->
+  <filter>
+    <filter-name>FilterTest01</filter-name>
+    <filter-class>com.lzumetal.javaweb.filter.FilterTest01</filter-class>
+  </filter>
+  <!-- 注册Filter -->
+  <filter>
+    <filter-name>FilterTest02</filter-name>
+    <filter-class>com.lzumetal.javaweb.filter.FilterTest02</filter-class>
+  </filter>
+
+  <!-- 映射Filter -->
+  <filter-mapping>
+    <filter-name>FilterTest02</filter-name>
+    <!-- 映射要拦截的路径，这里配置为过滤所有 -->
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <!-- 映射Filter -->
+  <filter-mapping>
+    <filter-name>FilterTest01</filter-name>
+    <!-- 映射要拦截的路径，这里配置为过滤所有 -->
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+</web-app>
