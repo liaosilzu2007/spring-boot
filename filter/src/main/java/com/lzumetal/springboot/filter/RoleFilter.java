@@ -1,6 +1,5 @@
 package com.lzumetal.springboot.filter;
 
-import com.lzumetal.springboot.utils.IPUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
@@ -9,18 +8,15 @@ import java.io.IOException;
 
 /**
  * @author liaosi
- * @date 2021-01-21
+ * @date 2021-02-19
  */
 @Slf4j
-//@WebFilter(urlPatterns = "/*", filterName = "blackIpFilter")
-public class BlackIpFilter implements Filter {
+public class RoleFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        String ipAddr = IPUtil.getIpAddr(request);
-        String requestURI = request.getRequestURI();
-        log.info("{}|访问ip|{}", requestURI, ipAddr);
+        log.info("获取用户角色...");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
