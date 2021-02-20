@@ -17,7 +17,7 @@ import java.util.List;
 @ToString
 public class User implements Serializable {
 
-    private long id;
+    private Long id;
 
     private Date createTime;
 

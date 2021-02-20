@@ -38,6 +38,7 @@
         <module>image</module>
         <module>filter</module>
         <module>javaweb</module>
+        <module>interceptor</module>
     </modules>
 
     <properties>
