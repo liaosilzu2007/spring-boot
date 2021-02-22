@@ -63,6 +63,7 @@
         <poi.version>3.17</poi.version>
         <joda-time.version>2.9.9</joda-time.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
+        <jjwt.token.version>0.9.1</jjwt.token.version>
     </properties>
 
     <dependencyManagement>
@@ -227,6 +228,13 @@
                 <groupId>com.belerweb</groupId>
                 <artifactId>pinyin4j</artifactId>
                 <version>${pinyin4j.version}</version>
+            </dependency>
+
+            <!-- jjwt token -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.token.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

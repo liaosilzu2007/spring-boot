@@ -74,5 +74,9 @@
             <groupId>com.belerweb</groupId>
             <artifactId>pinyin4j</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
     </dependencies>
 </project>

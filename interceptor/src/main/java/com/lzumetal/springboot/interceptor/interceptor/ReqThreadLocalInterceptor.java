@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.interceptor;
+package com.lzumetal.springboot.interceptor.interceptor;
 
 import com.lzumetal.springboot.utils.common.ApplicationContext;
 import com.lzumetal.springboot.utils.common.ThreadContext;
