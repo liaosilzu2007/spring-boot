@@ -1,0 +1,5 @@
+server:
+  port: 8081
+
+elasticsearch:
+  cluster-http-hosts: 192.168.10.1:9200

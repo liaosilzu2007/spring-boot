@@ -39,6 +39,7 @@
         <module>filter</module>
         <module>javaweb</module>
         <module>interceptor</module>
+        <module>elasticsearch</module>
     </modules>
 
     <properties>
@@ -64,6 +65,8 @@
         <joda-time.version>2.9.9</joda-time.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
         <jjwt.token.version>0.9.1</jjwt.token.version>
+        <elasticsearch.version>6.8.0</elasticsearch.version>
+        <spring.data.elasticsearch.version>3.2.3.RELEASE</spring.data.elasticsearch.version>
     </properties>
 
     <dependencyManagement>
@@ -117,6 +120,38 @@
                 <artifactId>spring-session</artifactId>
                 <version>${spring-session.version}</version>
             </dependency>
+
+            <!-- elasticsearch -->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+                <version>${spring.data.elasticsearch.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.elasticsearch.client</groupId>
+                        <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.elasticsearch.client</groupId>
+                        <artifactId>transport</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.elasticsearch.plugin</groupId>
+                        <artifactId>transport-netty4-client</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
 
             <!--gson-->
             <dependency>
