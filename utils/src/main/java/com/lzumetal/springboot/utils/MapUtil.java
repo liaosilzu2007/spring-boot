@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class MapUtil {
 
 
-    private static <K, V extends Comparable> Map<K, V> sortMapByValues(Map<K, V> map) {
+    public static <K, V extends Comparable> Map<K, V> sortMapByValues(Map<K, V> map) {
         HashMap<K, V> finalOut = new LinkedHashMap<>();
         map.entrySet()
                 .stream()
@@ -26,7 +26,7 @@ public class MapUtil {
     }
 
 
-    private static Map<Integer, Long> groupStat(Map<?, Integer> map) {
+    public static Map<Integer, Long> groupStat(Map<?, Integer> map) {
         if (CollectionUtils.isEmpty(map)) {
             return Collections.emptyMap();
         }

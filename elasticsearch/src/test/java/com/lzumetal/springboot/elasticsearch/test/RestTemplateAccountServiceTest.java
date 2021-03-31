@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {EsBootstrap.class})
 @Slf4j
-public class EsTest {
+public class RestTemplateAccountServiceTest {
 
 
     @Autowired

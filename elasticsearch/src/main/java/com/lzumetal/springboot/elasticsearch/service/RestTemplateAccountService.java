@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
  * @date 2021-03-29
  */
 @Service
-public class RestTemplateEmployeeService {
+public class RestTemplateAccountService {
 }

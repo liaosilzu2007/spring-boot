@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EsClientConfig {
 
-    @Value("${elasticsearch.http-hosts}")
+    @Value("${elasticsearch.cluster-http-hosts}")
     private String httpHosts;
 
 

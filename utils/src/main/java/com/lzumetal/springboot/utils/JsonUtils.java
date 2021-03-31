@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.lzumetal.springboot.utils.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
+
 /**
  * @author liaosi
  * @date 2021-02-20
@@ -27,4 +29,11 @@ public class JsonUtils {
         return null;
     }
 
+    public static <T> T fromJSON(String json, Class<T> clazz) {
+        try {
+            return Constants.OBJECT_MAPPER.readValue(json, clazz);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
