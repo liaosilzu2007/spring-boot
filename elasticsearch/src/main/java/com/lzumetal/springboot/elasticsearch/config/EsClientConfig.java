@@ -1,7 +1,9 @@
 package com.lzumetal.springboot.elasticsearch.config;
 
 import org.apache.http.HttpHost;
+import org.apache.http.client.config.RequestConfig;
 import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -28,9 +30,17 @@ public class EsClientConfig {
             httpHostArray[i] = new HttpHost(item.split(":")[0], Integer.parseInt(item.split(":")[1]), "http");
         }
         // 创建RestHighLevelClient客户端
-        return new RestHighLevelClient(RestClient.builder(httpHostArray));
-    }
+        return new RestHighLevelClient(RestClient.builder(httpHostArray).setRequestConfigCallback(new RestClientBuilder.RequestConfigCallback() {
+            @Override
+            public RequestConfig.Builder customizeRequestConfig(RequestConfig.Builder requestConfigBuilder) {
+                requestConfigBuilder.setConnectTimeout(2000);
+                requestConfigBuilder.setSocketTimeout(8000);
+                requestConfigBuilder.setConnectionRequestTimeout(5000);
+                return requestConfigBuilder;
 
+            }
+        }));
+    }
 
 
 
