@@ -1,6 +1,7 @@
 server:
-  context-path: /cluster-session
   port: 8090
+  servlet:
+    context-path: /cluster-session
 
 spring:
   redis:
@@ -9,10 +10,9 @@ spring:
     password: 123456
     database: 0
     timeout: 0
-    pool:
-      max-active: 8
-      max-wait: -1
-      max-idle: 8
-      min-idle: 0
+    jedis:
+      pool:
+        max-idle: 8
+        max-wait:
 #  session:
 #      store-type: redis
