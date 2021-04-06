@@ -371,7 +371,7 @@ public static boolean createQrCodeLogo(String path, String content){
         String s = "fdaf\r\nfdasf";
         s = s.replace("\r\n", System.getProperty("line.separator", "\n"));
         System.out.println(s);
-        String content= "http://m.kuaidi100.com/order/market/eb.jsp?sign=TdWugHtMarket";
+        String content= "http://www.baidu.com?orderid=100000000000001";
         encodeBarcodeForFileYilabao(content, "QRCode", new File("D:\\tiangui_qr.png"), 2800);
         
 //        BufferedImage image = new BufferedImage(184, 39, BufferedImage.TYPE_INT_RGB);
