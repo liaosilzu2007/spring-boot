@@ -238,6 +238,13 @@
                 <version>${poi.version}</version>
             </dependency>
 
+            <!-- jsoup -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>1.12.1</version>
+            </dependency>
+
             <!--joda-time-->
             <dependency>
                 <groupId>joda-time</groupId>
