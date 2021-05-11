@@ -10,4 +10,6 @@ public class Constants {
 
     public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
+    public static final String EMPTY_STR = "";
+
 }

@@ -1,5 +1,7 @@
 package com.lzumetal.springboot.utils;
 
+import com.lzumetal.springboot.utils.common.Constants;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -150,4 +152,92 @@ public class POIUtil {
     }
 
 
+    /**
+     * 指定单元格追加内容
+     *
+     * @param sheet
+     * @param row
+     * @param column
+     * @param content
+     */
+    public static void appendCellContent(Sheet sheet, int row, int column, String content) {
+        setCellContent(sheet, row, column, content, true);
+    }
+
+    /**
+     * 指定单元格设置内容
+     *
+     * @param sheet
+     * @param row
+     * @param column
+     * @param content
+     */
+    public static void setCellContent(Sheet sheet, int row, int column, String content) {
+        setCellContent(sheet, row, column, content, false);
+    }
+
+    private static void setCellContent(Sheet sheet, int row, int column, String content, boolean append) {
+        if (sheet == null) {
+            throw new RuntimeException("sheet is null");
+        }
+        Row rowItem = sheet.getRow(row);
+        if (rowItem == null) {
+            throw new RuntimeException("the specified row in sheet is null");
+        }
+        Cell cell = rowItem.getCell(column);
+        if (cell == null) {
+            throw new RuntimeException("the specified cell in sheet is null");
+        }
+        if (append) {
+            String oldValue = cell.toString() == null ? Constants.EMPTY_STR : cell.toString();
+            content = content == null ? Constants.EMPTY_STR : content;
+            cell.setCellValue(oldValue + content);
+        } else {
+            cell.setCellValue(content);
+        }
+
+    }
+
+
+    /**
+     * 根据行和列的索引获取单元格的数据
+     *
+     * @param row
+     * @param column
+     * @return
+     */
+    public static String getCellContent(Sheet sheet, int row, int column) {
+        if (sheet == null) {
+            return null;
+        }
+        Row rowItem = sheet.getRow(row);
+        if (rowItem == null) {
+            return null;
+        }
+        Cell cell = rowItem.getCell(column);
+        if (cell == null) {
+            return null;
+        }
+        return cell.toString();
+    }
+
+
+    public static void printCellContent(Sheet sheet) {
+        if (sheet == null) {
+            return;
+        }
+        int rows = sheet.getPhysicalNumberOfRows();
+        for (int i = 0; i < rows; i++) {
+            Row row = sheet.getRow(i);
+            int columns = row.getPhysicalNumberOfCells();
+            for (int j = 0; j < columns; j++) {
+                Cell cell = row.getCell(j);
+                String value = cell.toString();
+                if (StringUtils.isEmpty(value)) {
+                    continue;
+                }
+                System.out.println(i + "----" + j + "|" + value);
+            }
+        }
+    }
 }

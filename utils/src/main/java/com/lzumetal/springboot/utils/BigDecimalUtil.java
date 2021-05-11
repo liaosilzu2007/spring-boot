@@ -10,7 +10,12 @@ public class BigDecimalUtil {
 
 
     public static void main(String[] args) {
-        BigDecimal b = new BigDecimal("0.0000000368000");
+        /**
+         * stripTrailingZeros() 去掉末尾的零
+         * toPlainString()  非科学计算法的字符串
+         */
+        BigDecimal b = new BigDecimal("500000.00368000");
+        System.out.println(b);
         System.out.println(b.scale());      //13
         System.out.println(b.stripTrailingZeros());     //3.68E-8
         System.out.println(b.stripTrailingZeros().toPlainString());     //0.0000000368
@@ -23,8 +28,8 @@ public class BigDecimalUtil {
                 .toPlainString();
         System.out.println(costPriceYuan);
 
-        BigDecimal a = new BigDecimal("0.30");
-        System.out.println(a.stripTrailingZeros());
+        BigDecimal a = new BigDecimal("0.00");
+        System.out.println(a.stripTrailingZeros().toPlainString());
     }
 
 
