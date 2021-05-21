@@ -105,4 +105,15 @@ public class StringUtil {
         }
         return sb.toString();
     }
+
+
+    /**
+     * 去除所有空白符。包括' '、\n、\r、\t等
+     *
+     * @param source
+     * @return
+     */
+    public static String removeBlank(String source) {
+        return source.replaceAll("\\s", "");
+    }
 }
