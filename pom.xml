@@ -41,6 +41,7 @@
         <module>interceptor</module>
         <module>elasticsearch</module>
         <module>annotation</module>
+        <module>kafka</module>
     </modules>
 
     <properties>
@@ -68,6 +69,7 @@
         <jjwt.token.version>0.9.1</jjwt.token.version>
         <elasticsearch.version>6.8.0</elasticsearch.version>
         <spring.data.elasticsearch.version>3.2.3.RELEASE</spring.data.elasticsearch.version>
+        <spring-kafka.version>2.2.14.RELEASE</spring-kafka.version>
     </properties>
 
     <dependencyManagement>
@@ -166,6 +168,13 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!-- kafka队列 -->
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.version}</version>
             </dependency>
 
             <!-- dubbo -->
