@@ -37,6 +37,10 @@ public class HttpRequest {
         System.out.println(StandardCharsets.UTF_8.name());
     }
 
+    private int connectTimeout = 3000;
+    private int connectionRequestTimeout = 5000;
+    private int socketTimeout = 5000;
+
 
     private static final String DEFAULT_CHARSET_NAME = StandardCharsets.UTF_8.name();
 
@@ -45,9 +49,6 @@ public class HttpRequest {
 
     /* 参数 */
     private Map<String, String> params = new HashMap<>();
-
-    /* http请求配置 */
-    private RequestConfig requestConfig;
 
 
     public HttpRequest addHead(String key, String value) {
@@ -80,6 +81,20 @@ public class HttpRequest {
         return this;
     }
 
+    public HttpRequest connectTimeout(int connectTimeout) {
+        this.connectTimeout = connectTimeout;
+        return this;
+    }
+
+    public HttpRequest connectionRequestTimeout(int connectionRequestTimeout) {
+        this.connectionRequestTimeout = connectionRequestTimeout;
+        return this;
+    }
+
+    public HttpRequest socketTimeout(int socketTimeout) {
+        this.socketTimeout = socketTimeout;
+        return this;
+    }
 
     private List<NameValuePair> mapToNameValuePairList(Map<String, String> formParams) {
         List<NameValuePair> resuList = new ArrayList<>();
@@ -103,23 +118,18 @@ public class HttpRequest {
             urlTarget = url + "?" + URLEncodedUtils.format(mapToNameValuePairList(params), DEFAULT_CHARSET_NAME);
         }
         HttpGet method = new HttpGet(urlTarget);
+        method.setConfig(this.buildRequestConfig());
         return executeMethod(method);
     }
 
-    private RequestConfig buildRequestConfig(int connectTimeout, int socketTimeout) {
+
+    private RequestConfig buildRequestConfig() {
         return RequestConfig.custom()
-                .setConnectTimeout(connectTimeout)
-                .setConnectionRequestTimeout(1000)
-                .setSocketTimeout(socketTimeout)
+                .setConnectTimeout(this.connectTimeout)
+                .setConnectionRequestTimeout(this.connectionRequestTimeout)
+                .setSocketTimeout(this.socketTimeout)
                 .build();
 
-    }
-
-
-    public String post(String url, Map<String, String> params, int connectTimeout, int socketTimeout) throws IOException {
-        this.params.putAll(params);
-        this.requestConfig = buildRequestConfig(connectTimeout, socketTimeout);
-        return post(url);
     }
 
 
@@ -128,15 +138,14 @@ public class HttpRequest {
         return post(url);
     }
 
+
     private String post(String url) throws IOException {
         HttpPost method = new HttpPost(url);
         if (params != null && params.size() > 0) {
             UrlEncodedFormEntity uefEntity = new UrlEncodedFormEntity(mapToNameValuePairList(params), DEFAULT_CHARSET_NAME);
             method.setEntity(uefEntity);
         }
-        if (this.requestConfig != null) {
-            method.setConfig(this.requestConfig);
-        }
+        method.setConfig(this.buildRequestConfig());
         return executeMethod(method);
     }
 
@@ -144,6 +153,7 @@ public class HttpRequest {
         HttpPost method = new HttpPost(url);
         method.setEntity(new StringEntity(json, DEFAULT_CHARSET_NAME));
         method.setHeader("content-type", ContentType.APPLICATION_JSON.getMimeType());
+        method.setConfig(this.buildRequestConfig());
         return executeMethod(method);
     }
 
@@ -161,7 +171,6 @@ public class HttpRequest {
         method.setEntity(entity);
         return executeMethod(method);
     }
-
 
 
     public String postByte(String url, String fileParamName, byte[] fileBytes, String originalFilename, Map<String, String> otherParams) throws IOException {
