@@ -8,6 +8,7 @@ import com.lzumetal.springboot.redisson.lock.RedissonLockUtil;
 import com.lzumetal.springboot.utils.HttpRequest;
 import com.lzumetal.springboot.utils.common.ServiceException;
 import com.lzumetal.springboot.utils.response.EBaseResponseCode;
+import com.lzumetal.springboot.utils.response.EServiceResponseCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -87,7 +88,7 @@ public class WeixinService {
                     return true;
                 } else if (Objects.equals(87014, errcode)) {
                     //内容含违法违规内容
-                    throw new ServiceException(EServiceException.CONTENT_UNAPPROVED.code(), EServiceException.CONTENT_UNAPPROVED.msg());
+                    throw new ServiceException(EServiceResponseCode.CONTENT_UNAPPROVED.getCode(), EServiceResponseCode.CONTENT_UNAPPROVED.getMessage());
                 } else if (Objects.equals(40001, errcode)) {
                     this.clearAccessTokenInRedis(appid);
                 }
@@ -128,7 +129,7 @@ public class WeixinService {
                     return true;
                 } else if (Objects.equals(87014, errcode)) {
                     //图片含违法违规内容
-                    throw new ServiceException(EServiceException.IMAGE_UNAPPROVED.code(), EServiceException.IMAGE_UNAPPROVED.msg());
+                    throw new ServiceException(EServiceResponseCode.IMAGE_UNAPPROVED.getCode(), EServiceResponseCode.IMAGE_UNAPPROVED.getMessage());
                 } else if (Objects.equals(40001, errcode)) {
                     this.clearAccessTokenInRedis(appid);
                 }
@@ -160,7 +161,7 @@ public class WeixinService {
                     return true;
                 } else if (Objects.equals(87014, errcode)) {
                     //内容含违法违规内容
-                    throw new ServiceException(EServiceException.IMAGE_UNAPPROVED.code(), EServiceException.IMAGE_UNAPPROVED.msg());
+                    throw new ServiceException(EServiceResponseCode.IMAGE_UNAPPROVED.getCode(), EServiceResponseCode.IMAGE_UNAPPROVED.getMessage());
                 } else if (Objects.equals(40001, errcode)) {
                     this.clearAccessTokenInRedis(appid);
                 }

@@ -3,10 +3,11 @@ package com.lzumetal.springboot.image.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lzumetal.springboot.image.entity.dto.UploadImageDTO;
 import com.lzumetal.springboot.image.service.FileUploadService;
+import com.lzumetal.springboot.utils.common.ServiceException;
 import com.lzumetal.springboot.utils.response.EBaseResponseCode;
+import com.lzumetal.springboot.utils.response.EServiceResponseCode;
 import com.lzumetal.springboot.utils.response.PageBean;
 import com.lzumetal.springboot.utils.response.ResponseData;
-import com.lzumetal.springboot.utils.common.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,14 +48,13 @@ public class ImageFileController {
 
     @RequestMapping(value = "/uploadImage")
     public ResponseData uploadImage(@RequestParam("file") MultipartFile imageFile) throws ServiceException {
-        log.info("单张图片上传|PARAM|userid={},fileName={}", userid, imageFile.getOriginalFilename());
+        log.info("单张图片上传|PARAM|fileName={}", imageFile.getOriginalFilename());
         try {
             preCheck(imageFile);
-
             String url = fileUploadService.uploadImageWithCheck(imageFile);
             return ResponseData.data(url);
         } catch (Exception e) {
-            log.error("文件|uploadImage|ERROR|userId={}", userid, e);
+            log.error("文件|uploadImage|ERROR", e);
             if (e instanceof ServiceException) {
                 throw (ServiceException) e;
             }
@@ -76,7 +76,7 @@ public class ImageFileController {
             fileNames.add(imageFile.getOriginalFilename());
         }
 
-        log.info("批量图片上传|PARAM|userid={}|fileNames={}", userid, objectMapper.writeValueAsString(fileNames));
+        log.info("批量图片上传|PARAM|fileNames={}", objectMapper.writeValueAsString(fileNames));
 
         final CountDownLatch countDownLatch = new CountDownLatch(count);
         final List<UploadImageDTO> uploadImageDTOList = new ArrayList<>();
@@ -92,11 +92,11 @@ public class ImageFileController {
                     uploadImageDTO.setReqIndex(index);
                     uploadImageDTO.setUrl(url);
                 } catch (Exception e) {
-                    log.error("文件|uploadImageBatch|ERROR|userId={}|fileName={}", userid, imageFile.getOriginalFilename(), e);
+                    log.error("文件|uploadImageBatch|ERROR|fileName={}", imageFile.getOriginalFilename(), e);
                     if (e instanceof ServiceException) {
                         ServiceException serviceException = (ServiceException) e;
-                        if (Objects.equals(serviceException.getErrorCode(), EServiceException.IMAGE_UNAPPROVED.code())) {
-                            uploadImageDTO.setErrorCode(serviceException.getErrorCode());
+                        if (Objects.equals(serviceException.getCode(), EServiceResponseCode.IMAGE_UNAPPROVED.getCode())) {
+                            uploadImageDTO.setErrorCode(serviceException.getCode());
                         }
                     }
                 } finally {
@@ -108,7 +108,7 @@ public class ImageFileController {
         try {
             countDownLatch.await(12, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
-            log.error("文件|uploadImageBatch|ERROR|userId={}", userid, e);
+            log.error("文件|uploadImageBatch|ERROR", e);
         }
         //排序。返回数据按照上传图片顺序
         uploadImageDTOList.sort((o1, o2) -> {
@@ -119,8 +119,8 @@ public class ImageFileController {
         List<String> urls = new ArrayList<>();
         for (UploadImageDTO uploadImageDTO : uploadImageDTOList) {
             Integer errorCode = uploadImageDTO.getErrorCode();
-            if (errorCode != null && Objects.equals(EServiceException.IMAGE_UNAPPROVED.code(), errorCode)) {
-                throw new ServiceException(EServiceException.IMAGE_UNAPPROVED.code(), EServiceException.IMAGE_UNAPPROVED.msg());
+            if (errorCode != null && Objects.equals(EServiceResponseCode.IMAGE_UNAPPROVED.getCode(), errorCode)) {
+                throw new ServiceException(EServiceResponseCode.IMAGE_UNAPPROVED.getCode(), EServiceResponseCode.IMAGE_UNAPPROVED.getMessage());
             }
             String url = uploadImageDTO.getUrl();
             if (StringUtils.isEmpty(url)) {

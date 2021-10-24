@@ -4,6 +4,7 @@ import com.lzumetal.springboot.image.config.ConfigurationBean;
 import com.lzumetal.springboot.utils.HttpRequest;
 import com.lzumetal.springboot.utils.ImageUitl;
 import com.lzumetal.springboot.utils.common.ServiceException;
+import com.lzumetal.springboot.utils.response.EServiceResponseCode;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class FileUploadService {
 
 
     public String uploadImageWithCheck(MultipartFile imageFile) throws IOException, ServiceException {
-        String appid = configurationBean.getXcxAppid();
+        String appid = configurationBean.getXcxAppId();
         String secret = configurationBean.getXcxSecret();
         long size = imageFile.getSize();
         long mb = size / (1024 * 1024);
@@ -56,7 +57,7 @@ public class FileUploadService {
             imageCheck = weixinService.imageCheck(bytes, originalFilename, appid, secret);
         }
         if (!imageCheck) {
-            throw new ServiceException(EServiceException.IMAGE_CHECK_ERROR.code(), EServiceException.IMAGE_CHECK_ERROR.msg());
+            throw new ServiceException(EServiceResponseCode.IMAGE_CHECK_ERROR.getCode(), EServiceResponseCode.IMAGE_CHECK_ERROR.getMessage());
         }
         return this.uploadFile(imageFile);
     }

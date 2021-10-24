@@ -6,7 +6,13 @@ package com.lzumetal.springboot.redisson.enums;
  */
 public enum ERedisKey {
 
+    WECHAT_ACCESS_TOKEN("WECHAT_ACCESS_TOKEN", "微信AccessToken"),
+
+    //==============================================================
+
     LOCK_ORDER_REFUND("LOCK_ORDER_REFUND:", "订单退款"),
+
+    LOCK_WECHAT_ACCESS_TOKEN("LOCK_WECHAT_ACCESS_TOKEN", "获取微信AccessToken"),
     ;
 
     final String code;
