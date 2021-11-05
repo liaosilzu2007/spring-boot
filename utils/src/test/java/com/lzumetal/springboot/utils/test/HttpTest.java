@@ -15,7 +15,7 @@ public class HttpTest {
 
     @Test
     public void test() throws IOException {
-        String resp = new HttpRequest().post("https://www.baidu.com", Collections.emptyMap(), 5000, 30000);
+        String resp = new HttpRequest().post("https://www.baidu.com", Collections.emptyMap());
         System.out.println(resp);
     }
 

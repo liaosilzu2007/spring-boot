@@ -1,5 +1,6 @@
 package com.lzumetal.springboot.utils;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.regex.Matcher;
@@ -10,6 +11,9 @@ import java.util.regex.Pattern;
  * @date 2020-06-13
  */
 public class StringUtil {
+
+    /* 因为o和0,l和1很难区分,去掉大小写的o和小写l */
+    private static final String SEED = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz";
 
 
     private static final Pattern MOBILE_PATTERN = Pattern.compile("^1[3456789]\\d{9}$");
@@ -68,6 +72,34 @@ public class StringUtil {
 
 
     /**
+     * 判断是否是数值。
+     * <p>
+     * 和'isNumber'方法不同在于'1.2.1'这种格式的字符串此方法会返回false
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isStrictNumber(String str) {
+        if (StringUtils.isEmpty(str)) {
+            return false;
+        }
+        if (!str.contains(".")) {
+            return StringUtils.isNumeric(str);
+        }
+        int count = 0;
+        for (char c : str.toCharArray()) {
+            if (c == '.') {
+                count++;
+            }
+        }
+        if (count > 1) {
+            return false;
+        }
+        return isNumber(str);
+    }
+
+
+    /**
      * 是否是手机号
      *
      * @param str
@@ -116,4 +148,41 @@ public class StringUtil {
     public static String removeBlank(String source) {
         return source.replaceAll("\\s", "");
     }
+
+
+    public static String randomString(int bit) {
+        if (bit <= 0) {
+            bit = 6; // 默认6位
+        }
+        return RandomStringUtils.random(bit, SEED);// 返回6位的字符串
+    }
+
+    /**
+     * 获取字符串中结尾的数字，比如字符串：a2b09，获得9这个数字
+     *
+     * @param source
+     * @return
+     */
+    public static Integer getEndNumber(String source) {
+        if (source == null) {
+            return null;
+        }
+        Integer index = null;
+        char[] chars = source.toCharArray();
+        int i = chars.length - 1;
+        while (i < chars.length) {
+            char c = chars[i];
+            if (Character.isDigit(c)) {
+                index = i;
+            } else {
+                break;
+            }
+            i--;
+        }
+        if (index != null) {
+            return Integer.parseInt(source.substring(index));
+        }
+        return null;
+    }
+
 }
