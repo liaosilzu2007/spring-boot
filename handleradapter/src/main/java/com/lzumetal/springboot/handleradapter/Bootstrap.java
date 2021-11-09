@@ -10,10 +10,10 @@ import org.springframework.web.servlet.handler.SimpleServletHandlerAdapter;
  * @date 2021-11-08
  */
 @SpringBootApplication
-public class BootStrap {
+public class Bootstrap {
 
     public static void main(String[] args) {
-        SpringApplication.run(BootStrap.class, args);
+        SpringApplication.run(Bootstrap.class, args);
     }
 
     @Bean
