@@ -43,6 +43,7 @@
         <module>annotation</module>
         <module>kafka</module>
         <module>handleradapter</module>
+        <module>netty</module>
     </modules>
 
     <properties>
