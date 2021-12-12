@@ -44,6 +44,7 @@
         <module>kafka</module>
         <module>handleradapter</module>
         <module>netty</module>
+        <module>delay-task</module>
     </modules>
 
     <properties>
@@ -72,6 +73,7 @@
         <elasticsearch.version>6.8.0</elasticsearch.version>
         <spring.data.elasticsearch.version>3.2.3.RELEASE</spring.data.elasticsearch.version>
         <spring-kafka.version>2.2.14.RELEASE</spring-kafka.version>
+        <commons-pool2.version>2.9.0</commons-pool2.version>
     </properties>
 
     <dependencyManagement>
@@ -113,7 +115,11 @@
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot-starter.verion}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
