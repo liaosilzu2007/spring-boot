@@ -27,10 +27,10 @@ public class KeyExpireTest {
     }
 
 
-    static class RedisSub extends JedisPubSub {
+    /*static class RedisSub extends JedisPubSub {
         @Override
         public void onMessage(String channel, String message) {
             System.out.println(System.currentTimeMillis()+"ms:"+message+"订单取消");
         }
-    }
+    }*/
 }
