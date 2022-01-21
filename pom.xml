@@ -45,6 +45,7 @@
         <module>handleradapter</module>
         <module>netty</module>
         <module>delay-task</module>
+        <module>i18n</module>
     </modules>
 
     <properties>

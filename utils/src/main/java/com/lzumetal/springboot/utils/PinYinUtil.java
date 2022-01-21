@@ -44,7 +44,11 @@ public class PinYinUtil {
                     pinyinStr.append(c);
                     continue;
                 }
-                String word = PinyinHelper.toHanyuPinyinStringArray(c, defaultFormat)[0];
+                String[] arr = PinyinHelper.toHanyuPinyinStringArray(c, defaultFormat);
+                if (arr == null) {
+                    continue;
+                }
+                String word = arr[0];
                 if (word == null) {
                     pinyinStr.append(c);
                     continue;
