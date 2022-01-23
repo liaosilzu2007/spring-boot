@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.text.MessageFormat;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * @author liaosi
@@ -29,5 +30,15 @@ public class MainTest {
         String msg2 = mf.format(params);
         System.out.println(msg1);
         System.out.println(msg2);
+    }
+
+
+    @Test
+    public void testResourceBundle() {
+        ResourceBundle rb1 = ResourceBundle.getBundle("i18n/resource", Locale.US);
+        ResourceBundle rb2 = ResourceBundle.getBundle("i18n/resource", Locale.CHINA);
+        System.out.println("us:"+rb1.getString("greeting.common"));
+        System.out.println("cn:"+rb2.getString("greeting.common"));
+
     }
 }

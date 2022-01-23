@@ -3,4 +3,4 @@ server:
 
 spring:
   messages:
-    basename: i18n/message.properties
+    basename: i18n.resource

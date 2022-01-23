@@ -1,7 +1,6 @@
 package demoyaml.controller;
 
 
-import com.google.gson.Gson;
 import demoyaml.entity.DBConfig;
 import demoyaml.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,21 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
-    private static Gson gson = new Gson();
     @Autowired
     private User user;
+
     @Autowired
-    private DBConfig DBConfig;
+    private DBConfig dbConfig;
 
 
     @RequestMapping("/getUser")
-    String getUser() {
-        return gson.toJson(user);
+    public User getUser() {
+        return user;
     }
 
     @RequestMapping("/getEnvConfig")
-    String getDBConfig() {
-        return gson.toJson(DBConfig);
+    public DBConfig getDbConfig() {
+        return dbConfig;
     }
 
 }
