@@ -30,6 +30,8 @@ public class BigDecimalUtil {
 
         BigDecimal a = new BigDecimal("0.00");
         System.out.println(a.stripTrailingZeros().toPlainString());
+
+        System.out.println(getDiscountDesc(new BigDecimal(0.92)));
     }
 
 
@@ -59,5 +61,17 @@ public class BigDecimalUtil {
         }
         return value.stripTrailingZeros().scale();
     }
+
+
+    public static String getDiscountDesc(BigDecimal discount) {
+        String tip = new BigDecimal("100").multiply(discount)
+                .setScale(1, BigDecimal.ROUND_HALF_UP)
+                .stripTrailingZeros()
+                .toPlainString();
+        //去掉后面的0
+        tip = tip.replaceAll("(0)+$", "");
+        return tip + "折";
+    }
+
 
 }

@@ -1,2 +1,6 @@
 server:
   port: 8081
+
+spring:
+  messages:
+    basename: i18n/message.properties
