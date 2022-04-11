@@ -75,6 +75,7 @@
         <spring.data.elasticsearch.version>3.2.3.RELEASE</spring.data.elasticsearch.version>
         <spring-kafka.version>2.2.14.RELEASE</spring-kafka.version>
         <commons-pool2.version>2.9.0</commons-pool2.version>
+        <spring.jasypt.version>3.0.3</spring.jasypt.version>
     </properties>
 
     <dependencyManagement>
@@ -126,6 +127,11 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot-starter.verion}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${spring.jasypt.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.session</groupId>
