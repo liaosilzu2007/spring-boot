@@ -1,8 +1,7 @@
 package com.ddcx.springboot.democonfig.controller;
 
 import com.ddcx.springboot.democonfig.entity.Book;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.lzumetal.springboot.utils.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
 
-    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Autowired
     private Book book;
@@ -34,11 +32,11 @@ public class DemoController {
     @RequestMapping("/bookInfo")
     String bookInfo() {
         return "bookName-->" + bookName + "\nbookAuthor-->" + bookAuthor +
-                "\npublisher-->" + publisher + "\nprice-->" + price ;
+                "\npublisher-->" + publisher + "\nprice-->" + price;
     }
 
     @RequestMapping("/prefixConfigTest")
-    String prefixConfigTest() {
-        return gson.toJson(book);
+    public ResponseData prefixConfigTest() {
+        return ResponseData.data(book);
     }
 }

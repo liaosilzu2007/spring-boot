@@ -1,0 +1,6 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /open-source-lib
+logging:
+  config: classpath:logback.xml

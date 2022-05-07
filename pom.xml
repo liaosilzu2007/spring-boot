@@ -15,7 +15,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>springboot-helloworld</module>
         <module>demo-config</module>
         <module>database-mybatis</module>
         <module>demo-yaml</module>
@@ -46,6 +45,7 @@
         <module>netty</module>
         <module>delay-task</module>
         <module>i18n</module>
+        <module>open-source-lib</module>
     </modules>
 
     <properties>
