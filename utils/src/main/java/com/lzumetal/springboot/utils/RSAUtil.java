@@ -1,5 +1,6 @@
 package com.lzumetal.springboot.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Cipher;
@@ -14,6 +15,7 @@ import java.security.spec.X509EncodedKeySpec;
  * @author liaosi
  * @date 2020-03-05
  */
+@Slf4j
 public class RSAUtil {
 
 
@@ -32,9 +34,9 @@ public class RSAUtil {
     static {
         try {
             keyFactory = KeyFactory.getInstance("RSA");
-            signature = Signature.getInstance("MD5withRSA");
+            signature = Signature.getInstance("SHA1withRSA");
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            log.error("RSAUtil init error", e);
         }
     }
 

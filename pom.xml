@@ -46,6 +46,8 @@
         <module>delay-task</module>
         <module>i18n</module>
         <module>open-source-lib</module>
+        <module>webservice-client</module>
+        <module>webservice-server</module>
     </modules>
 
     <properties>
