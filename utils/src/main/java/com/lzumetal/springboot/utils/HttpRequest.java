@@ -196,7 +196,7 @@ public class HttpRequest {
     private String executeMethod(HttpUriRequest request) throws IOException {
         if (this.headers != null && this.headers.size() > 0) {
             for (Map.Entry<String, String> entry : this.headers.entrySet()) {
-                request.addHeader(entry.getKey(), entry.getValue());
+                request.setHeader(entry.getKey(), entry.getValue());
             }
         }
         HttpClient httpClient = HttpConnectionManager.getInst().getHttpClient();
