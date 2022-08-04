@@ -27,14 +27,13 @@ public class POIUtil {
     private static final Logger log = LoggerFactory.getLogger(POIUtil.class);
     private static final String EMPTY_STRING = "";
 
-    public static List<List<String>> readExcelValue(Workbook workbook, int sheetNum) {
+
+    private static List<List<String>> readExcelValue(Sheet sheet) {
         List<List<String>> list = new ArrayList<>();
-        // 得到sheet
-        Sheet sheet = workbook.getSheetAt(sheetNum);
         // 得到Excel的行数
         int totalRows = sheet.getPhysicalNumberOfRows();
         /*
-         * 得到Excel的列数(前提是有行数)，在实践中发现如果列中间有空值的话，那么读到空值的地方就停止了。所以我们需要取得最长的列。　　　　　　　　　　　　　
+         * 得到Excel的列数(前提是有行数)，在实践中发现如果列中间有空值的话，那么读到空值的地方就停止了。所以我们需要取得最长的列。
          * 如果每个列正好都有一个空值得话，通过这种方式获得的列长会比真实的列要少一列。所以我自己会在将要倒入数据库中的EXCEL表加一个表头
          * 防止列少了，而插入数据库中报错。
          */
@@ -53,13 +52,12 @@ public class POIUtil {
         log.info("sheet:{},数据总行数：{},数据总列数：{}", sheet.getSheetName(), totalRows - 1, totalColumns);
 
         // 遍历行
-        for (int i = 3; i < totalRows; i++) {
+        for (int i = 0; i < totalRows; i++) {
             // 读取左上端单元格
             Row row = sheet.getRow(i);
             // 行不为空
             if (row != null) {
                 List<String> beanFields = new ArrayList<>();
-                beanFields.add(sheet.getSheetName());
                 for (int j = 0; j < totalColumns; j++) {
                     Cell cell = row.getCell(j);
                     beanFields.add(getStringCellValue(cell));
@@ -68,6 +66,20 @@ public class POIUtil {
             }
         }
         return list;
+    }
+
+
+    public static List<List<String>> readExcelValue(Workbook workbook, int sheetIndex) {
+        // 得到sheet
+        Sheet sheet = workbook.getSheetAt(sheetIndex);
+        return readExcelValue(sheet);
+    }
+
+
+    public static List<List<String>> readExcelValue(Workbook workbook, String sheetName) {
+        // 得到sheet
+        Sheet sheet = workbook.getSheet(sheetName);
+        return readExcelValue(sheet);
     }
 
     /**
