@@ -2,6 +2,9 @@ package com.lzumetal.springboot.utils;
 
 import org.jasypt.util.text.BasicTextEncryptor;
 
+/**
+ * Spring框架内置的加密功能，可以在配置文件保存加密后的字符串
+ */
 public class SpringEncUtil {
 
     public static void main(String[] args) {
