@@ -1,11 +1,10 @@
 package com.lzumetal.springboot.utils;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +96,26 @@ public class FileUtil {
             }
         }
         return flag;
+    }
+
+
+    /**
+     * 判断文件是否是pdf格式
+     * 依据：文件字节的前8位
+     *
+     * @param file
+     * @return
+     */
+    public static boolean isPdfFile(File file) {
+        try (InputStream is = new FileInputStream(file)) {
+            byte[] bytes = new byte[4];
+            is.read(bytes);
+            String hexStr = Hex.encodeHexString(bytes);
+            return hexStr.contains("25504446");
+        } catch (IOException e) {
+            log.error("判断文件是否为pdf格式异常", e);
+            return false;
+        }
     }
 
 

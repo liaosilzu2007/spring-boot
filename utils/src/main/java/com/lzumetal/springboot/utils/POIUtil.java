@@ -1,7 +1,7 @@
 package com.lzumetal.springboot.utils;
 
-import com.lzumetal.springboot.utils.common.Constants;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,7 +14,9 @@ import org.slf4j.LoggerFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 
 /**
  * 类描述：
@@ -27,14 +29,13 @@ public class POIUtil {
     private static final Logger log = LoggerFactory.getLogger(POIUtil.class);
     private static final String EMPTY_STRING = "";
 
-    public static List<List<String>> readExcelValue(Workbook workbook, int sheetNum) {
+
+    private static List<List<String>> readExcelValue(Sheet sheet) {
         List<List<String>> list = new ArrayList<>();
-        // 得到sheet
-        Sheet sheet = workbook.getSheetAt(sheetNum);
         // 得到Excel的行数
         int totalRows = sheet.getPhysicalNumberOfRows();
         /*
-         * 得到Excel的列数(前提是有行数)，在实践中发现如果列中间有空值的话，那么读到空值的地方就停止了。所以我们需要取得最长的列。　　　　　　　　　　　　　
+         * 得到Excel的列数(前提是有行数)，在实践中发现如果列中间有空值的话，那么读到空值的地方就停止了。所以我们需要取得最长的列。
          * 如果每个列正好都有一个空值得话，通过这种方式获得的列长会比真实的列要少一列。所以我自己会在将要倒入数据库中的EXCEL表加一个表头
          * 防止列少了，而插入数据库中报错。
          */
@@ -53,13 +54,12 @@ public class POIUtil {
         log.info("sheet:{},数据总行数：{},数据总列数：{}", sheet.getSheetName(), totalRows - 1, totalColumns);
 
         // 遍历行
-        for (int i = 3; i < totalRows; i++) {
+        for (int i = 0; i < totalRows; i++) {
             // 读取左上端单元格
             Row row = sheet.getRow(i);
             // 行不为空
             if (row != null) {
                 List<String> beanFields = new ArrayList<>();
-                beanFields.add(sheet.getSheetName());
                 for (int j = 0; j < totalColumns; j++) {
                     Cell cell = row.getCell(j);
                     beanFields.add(getStringCellValue(cell));
@@ -68,6 +68,20 @@ public class POIUtil {
             }
         }
         return list;
+    }
+
+
+    public static List<List<String>> readExcelValue(Workbook workbook, int sheetIndex) {
+        // 得到sheet
+        Sheet sheet = workbook.getSheetAt(sheetIndex);
+        return readExcelValue(sheet);
+    }
+
+
+    public static List<List<String>> readExcelValue(Workbook workbook, String sheetName) {
+        // 得到sheet
+        Sheet sheet = workbook.getSheet(sheetName);
+        return readExcelValue(sheet);
     }
 
     /**
@@ -84,7 +98,13 @@ public class POIUtil {
                     strCell = String.valueOf(cell.getBooleanCellValue());
                     break;
                 case NUMERIC:
-                    strCell = String.valueOf((cell.getNumericCellValue()));
+                    String dataFormatString = cell.getCellStyle().getDataFormatString();
+                    if ("hh:mm:ss".equals(dataFormatString)) {
+                        Date date = cell.getDateCellValue();
+                        strCell = DateFormatUtils.format(date, "HH:mm:ss");
+                    } else {
+                        strCell = String.valueOf((cell.getNumericCellValue()));
+                    }
                     break;
                 case STRING:
                     strCell = cell.getStringCellValue();
@@ -119,6 +139,7 @@ public class POIUtil {
         return workbook;
     }
 
+
     /**
      * 获取Excel文件表单的数量
      *
@@ -133,11 +154,21 @@ public class POIUtil {
 
 
     /**
+     * 根据后缀名判读是不是POI可处理的excel文件
+     *
+     * @param filePath
+     */
+    public static boolean isExcel(String filePath) {
+        return isExcel2003(filePath) || isExcel2007(filePath);
+    }
+
+
+    /**
      * 是否是2003的excel，返回true是2003
      *
      * @param filePath 文件全路径名
      */
-    public static boolean isExcel2003(String filePath) {
+    private static boolean isExcel2003(String filePath) {
         return filePath.matches("^.+\\.(?i)(xls)$");
     }
 
@@ -147,7 +178,7 @@ public class POIUtil {
      *
      * @param filePath 文件全路径名
      */
-    public static boolean isExcel2007(String filePath) {
+    private static boolean isExcel2007(String filePath) {
         return filePath.matches("^.+\\.(?i)(xlsx)$");
     }
 
@@ -189,8 +220,8 @@ public class POIUtil {
             throw new RuntimeException("the specified cell in sheet is null");
         }
         if (append) {
-            String oldValue = cell.toString() == null ? Constants.EMPTY_STR : cell.toString();
-            content = content == null ? Constants.EMPTY_STR : content;
+            String oldValue = cell.toString() == null ? EMPTY_STRING : cell.toString();
+            content = content == null ? EMPTY_STRING : content;
             cell.setCellValue(oldValue + content);
         } else {
             cell.setCellValue(content);
@@ -240,4 +271,5 @@ public class POIUtil {
             }
         }
     }
+
 }

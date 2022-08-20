@@ -28,5 +28,12 @@ public class SpringContextUtil implements ApplicationContextAware {
         return applicationContext.getBean(requiredType);
     }
 
+    /**
+     * 获取当前运行环境，即spring.profiles.active的值
+     */
+    public static String getActiveProfile() {
+        return applicationContext.getEnvironment().getActiveProfiles()[0];
+    }
+
 
 }
