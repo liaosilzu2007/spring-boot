@@ -2,11 +2,9 @@ package com.lzumetal.springboot.utils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -180,6 +178,43 @@ public class POIUtil {
      */
     private static boolean isExcel2007(String filePath) {
         return filePath.matches("^.+\\.(?i)(xlsx)$");
+    }
+
+
+    public static Workbook generateBlankTemplate(String sheetName, String[] headers) {
+        // 创建一个新的excel
+        Workbook workbook = new HSSFWorkbook();
+
+        //生成一个表格
+        Sheet sheet = workbook.createSheet(sheetName);
+        //设置表格默认列宽度为20个字符
+        sheet.setDefaultColumnWidth(26);
+
+        //标题的样式
+        CellStyle titleStyle = workbook.createCellStyle();
+        titleStyle.setVerticalAlignment(VerticalAlignment.TOP);
+        Font titleFont = workbook.createFont();  //字体
+        titleFont.setBold(true);
+        titleStyle.setFont(titleFont);
+
+        //列的样式
+        CellStyle columnStyle = workbook.createCellStyle();
+        DataFormat dataFormat = workbook.createDataFormat();
+        columnStyle.setDataFormat(dataFormat.getFormat("@"));   //文本格式
+
+        //插入第一行的标题
+        Row row = sheet.createRow(0);
+        for (int k = 0; k < headers.length; k++) {
+            Cell cell = row.createCell(k);
+            cell.setCellStyle(titleStyle);
+            cell.setCellValue(new HSSFRichTextString(headers[k]));
+
+            //设置列的格式为"文本"
+            sheet.setDefaultColumnStyle(k, columnStyle);
+            //设置列宽:16个字符宽度
+            sheet.setColumnWidth(k, 16*256);
+        }
+        return workbook;
     }
 
 
