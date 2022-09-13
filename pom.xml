@@ -32,7 +32,6 @@
         <module>aop</module>
         <module>retry</module>
         <module>redisson-lock</module>
-        <module>http</module>
         <module>image</module>
         <module>filter</module>
         <module>javaweb-filter</module>
