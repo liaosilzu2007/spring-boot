@@ -26,6 +26,6 @@ db:
 spring:
      profiles: test
 db:
-     url: jdbc:mysql://localhost:3306/test
+     url: jdbc:mysql://192.168.128.5:3306/test
      username: root
-     password: 123456
+     password: 123123
