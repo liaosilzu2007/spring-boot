@@ -31,7 +31,6 @@
         <module>utils</module>
         <module>aop</module>
         <module>retry</module>
-        <module>spring</module>
         <module>redisson-lock</module>
         <module>http</module>
         <module>image</module>

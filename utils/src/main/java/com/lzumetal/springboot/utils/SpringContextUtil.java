@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.spring.util;
+package com.lzumetal.springboot.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
