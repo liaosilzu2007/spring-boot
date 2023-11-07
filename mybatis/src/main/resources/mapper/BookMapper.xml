@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lzumetal.springboot.mybatis.mapper.BookMapper">
-  <resultMap id="BaseResultMap" type="Book">
+  <resultMap id="BaseResultMap" type="com.lzumetal.springboot.mybatis.entity.Book">
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="price" jdbcType="DOUBLE" property="price" />
   </resultMap>
-  <insert id="insert" parameterType="Book">
-    insert into book (id, name, author, 
+  <insert id="insert" parameterType="com.lzumetal.springboot.mybatis.entity.Book">
+    insert into tbook (id, name, author,
       price)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
       #{price,jdbcType=DOUBLE})
   </insert>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, author, price
-    from book
+    from tbook
   </select>
   <select id="getById" resultMap="BaseResultMap">
     select id, name, author, price
-    from book
+    from tbook
     WHERE id = #{id}
   </select>
 </mapper>
