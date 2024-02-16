@@ -16,16 +16,16 @@ import java.util.List;
 public class FileUtil {
 
 
-    public static List<String> readFromLogFiles(List<String> filesNames) {
+    public static List<String> readFiles(List<String> filesNames) {
         List<String> list = new ArrayList<>();
         for (String filesName : filesNames) {
-            list.addAll(readFromLogFile(filesName));
+            list.addAll(readFile(filesName));
         }
         return list;
     }
 
 
-    public static List<String> readFromLogFile(String filesName) {
+    public static List<String> readFile(String filesName) {
         List<String> list = new ArrayList<>();
         File file = new File(filesName);
         if (file.exists()) {
@@ -38,8 +38,8 @@ public class FileUtil {
                     }
                 }
             } catch (Exception e) {
-                log.error("读取日志文件|异常|", e);
-                throw new RuntimeException("读取日志文件出错");
+                log.error("读取文件|异常|", e);
+                throw new RuntimeException("读取文件出错" + e.getMessage());
             }
         }
         return list;

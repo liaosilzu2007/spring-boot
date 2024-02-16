@@ -26,6 +26,8 @@ public class StringUtil {
         System.out.println(source);
         System.out.println(filterEmoji(source));
         System.out.println(filterSpecialCharacters(source));
+        System.out.println(randomString(20));
+
     }
 
     /**
