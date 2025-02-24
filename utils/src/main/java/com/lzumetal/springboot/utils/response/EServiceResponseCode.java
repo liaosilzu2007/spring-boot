@@ -6,6 +6,7 @@ package com.lzumetal.springboot.utils.response;
  */
 public enum EServiceResponseCode implements ResponseCode {
 
+    FILE_ERROR(1013, "获取文件失败"),
     CONTENT_UNAPPROVED(1014, "文本中含有违规内容"),
     CONTENT_CHECK_ERROR(1015, "文本审核异常，请稍候再试"),
     IMAGE_UNAPPROVED(1016, "图片含有违规内容"),

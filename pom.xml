@@ -32,7 +32,7 @@
         <module>aop</module>
         <module>retry</module>
         <module>redisson-lock</module>
-        <module>image</module>
+        <module>file</module>
         <module>filter</module>
         <module>javaweb-filter</module>
         <module>interceptor</module>
