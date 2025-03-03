@@ -1,6 +1,8 @@
 package com.lzumetal.springboot.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.lzumetal.springboot.utils.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,10 +16,15 @@ import java.io.IOException;
 public class JsonUtils {
 
 
+
     public static void main(String[] args) {
         System.out.println(toJson(null));
     }
 
+
+    public static String gsonPrettyFormat(Object object) {
+        return Constants.GSON.toJson(object);
+    }
 
 
     public static String toJson(Object object) {
