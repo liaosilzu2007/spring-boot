@@ -16,6 +16,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -157,6 +158,15 @@ public class HttpRequest {
         return executeMethod(method);
     }
 
+    public String postHttpsJson(String url, String json) throws IOException {
+        HttpPost method = new HttpPost(url);
+        method.setEntity(new StringEntity(json, DEFAULT_CHARSET_NAME));
+        method.setHeader("content-type", ContentType.APPLICATION_JSON.getMimeType());
+        method.setConfig(this.buildRequestConfig());
+        return executeHttpsMethod(method);
+    }
+
+
 
     public String postMultipartFile(String url, String fileParamName, MultipartFile multipartFile, Map<String, String> otherParams) throws IOException {
         HttpPost method = new HttpPost(url);
@@ -212,5 +222,24 @@ public class HttpRequest {
         }
     }
 
+
+    private String executeHttpsMethod(HttpUriRequest request) throws IOException {
+        if (this.headers != null && this.headers.size() > 0) {
+            for (Map.Entry<String, String> entry : this.headers.entrySet()) {
+                request.setHeader(entry.getKey(), entry.getValue());
+            }
+        }
+        CloseableHttpClient httpsClient = SSLHttpClient.getNoVerifyCaHttpsClient();
+        HttpResponse response = httpsClient.execute(request);
+        int status = response.getStatusLine().getStatusCode();
+        if (status == HttpStatus.SC_OK) {
+            HttpEntity entity = response.getEntity();
+            return entity != null ? EntityUtils.toString(entity, DEFAULT_CHARSET_NAME) : null;
+        } else {
+            //状态不是200的时候reponse的流也要消费一下，否则连接不会返回连接池，导致连接泄露
+            EntityUtils.consumeQuietly(response.getEntity());
+            throw new ClientProtocolException("Unexpected response status: " + status);
+        }
+    }
 
 }

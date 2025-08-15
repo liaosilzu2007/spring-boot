@@ -1,10 +1,17 @@
 package com.lzumetal.springboot.utils.func;
 
 import com.lzumetal.springboot.utils.FileUtil;
+import com.lzumetal.springboot.utils.POIUtil;
+import lombok.ToString;
+import lombok.extern.log4j.Log4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Test;
+import org.springframework.util.CollectionUtils;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,22 +23,25 @@ public class CreateFile {
 
     @Test
     public void testGenerateInsertFile() throws IOException {
-       this.generateInsertFile("D:\\tmp\\source.txt","D:\\tmp\\temp_1.sql");
+       this.generateInsertFile("D:\\tmp\\source.txt","D:\\tmp\\temp_101.sql");
     }
 
 
 
     public void generateInsertFile(String sourceFile, String outputFile) throws IOException {
         List<String> sourceLines = FileUtil.readFile(sourceFile);
-        //String sql = "insert into t_data_export_temp(id,khh,flag) values(func_nextid('t_data_export_temp'),'%s',2);";
-        String sql = "insert into t_temp(month,cust_no) values(202312,'%s');";
+        //String sql = "insert into t_temp(id,khh,flag) values(seq_temp.nextval,'%s',2);";
+        String sql = "insert into t_temp(id,month,cust_no) values(seq_temp.nextval,202312,'%s');";
         //List<String> sqlLines = new ArrayList<>();
         StringBuilder sqlText = new StringBuilder();
-        sqlText.append("prompt Importing table t_temp...").append("\n");
+        /*sqlText.append("prompt Importing table t_temp...").append("\n");
         sqlText.append("set feedback off").append("\n");
         sqlText.append("set define off").append("\n");*/    //ob数据库不需要加此命令
         for (String line : sourceLines) {
-            sqlText.append(String.format(sql, line)).append("\n");
+            if (sqlText.length() > 0) {
+                sqlText.append("\n");
+            }
+            sqlText.append(String.format(sql, line));
         }
         //sqlText.append("prompt Done.");
         try (FileWriter fw = new FileWriter(outputFile);){
@@ -42,8 +52,8 @@ public class CreateFile {
 
     @Test
     public void genenateByMonth() throws IOException {
-        String month = "202412";
-        Workbook workbook = POIUtil.getWorkbook("D:\\BrowserDownload\\数据需求.xlsx");
+        String month = "202506";
+        Workbook workbook = POIUtil.getWorkbook("D:\\tmp\\数据需求_20250731\\数据需求.xlsx");
         List<List<String>> lists = POIUtil.readExcelValue(workbook, month);
         if (CollectionUtils.isEmpty(lists)) {
             System.err.println("sheet=" + month + "未获取到数据！！！！");
@@ -65,7 +75,7 @@ public class CreateFile {
             }
 
         }
-        String outputFile = "D:\\tmp\\temp_" + month + ".sql";
+        String outputFile = "D:\\tmp\\数据需求_20250731\\数据需求_20250731_" + month + ".sql";
 
         System.out.println("sheet=" + month + "，总记录" + count + "条。");
         try (FileWriter fw = new FileWriter(outputFile);){
