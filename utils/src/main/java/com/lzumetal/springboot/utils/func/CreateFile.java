@@ -18,18 +18,24 @@ import java.util.List;
 public class CreateFile {
 
 
-
-    @Test
-    public void testGenerateInsertFile() throws IOException {
-        this.generateInsertFile("D:\\tmp\\source.txt", "D:\\tmp\\temp_100.sql");
+    public static void main(String[] args) {
+        String sql = "insert into t_data_export_temp(id,khh,extra) values(func_nextid('t_data_export_temp'),'%s',%s);";
+        String khh = "123";
+        String extra = "0.5";
+        System.out.println(String.format(sql, khh, extra));
     }
 
 
 
-    public void generateInsertFile(String sourceFile, String outputFile) throws IOException {
-        List<String> sourceLines = FileUtil.readFile(sourceFile);
-        String sql = "insert into t_temp(id,khh,flag) values(seq_temp.nextval,'%s',100);";
 
+    @Test
+    public void generateByFlag() throws IOException {
+        final int flag = 2;
+        final String sourceFile = "D:\\tmp\\source.txt";
+        final String outputFile = "D:\\tmp\\temp_" + flag +".sql";
+        List<String> sourceLines = FileUtil.readFile(sourceFile);
+        String sql = "insert into t_data_export_temp(id,khh,flag) values(func_nextid('t_data_export_temp'),'%s',%d);";
+        //String sql = "insert into t_data_export_temp(id,khh,yf) values(func_nextid('t_data_export_temp'),'%s',202503);";
         //List<String> sqlLines = new ArrayList<>();
         StringBuilder sqlText = new StringBuilder();
         /*sqlText.append("prompt Importing table t_data_export_temp...").append("\n");
@@ -39,7 +45,7 @@ public class CreateFile {
             if (sqlText.length() > 0) {
                 sqlText.append("\n");
             }
-            sqlText.append(String.format(sql, line));
+            sqlText.append(String.format(sql, line,flag));
         }
         //sqlText.append("prompt Done.");
         try (FileWriter fw = new FileWriter(outputFile);){
@@ -49,16 +55,16 @@ public class CreateFile {
 
 
     @Test
-    public void genenateByMonth() throws IOException {
-        String month = "202512";
-        Workbook workbook = POIUtil.getWorkbook("D:\\tmp\\数据需求_20260130\\数据需求.xlsx");
+    public void generateByMonth() throws IOException {
+        String month = "202605";
+        Workbook workbook = POIUtil.getWorkbook("D:\\tmp\\数据需求_20260710\\数据需求.xlsx");
         List<List<String>> lists = POIUtil.readExcelValue(workbook, month);
         if (CollectionUtils.isEmpty(lists)) {
             System.err.println("sheet=" + month + "未获取到数据！！！！");
             return;
         }
         int count = 0;
-        String sql = "insert into t_temp(id,khh,yf) values(seq_temp.nextval,'%s',%d);";
+        String sql = "insert into t_data_export_temp(id,khh,yf) values(func_nextid('t_data_export_temp'),'%s',%d);";
         StringBuilder sqlText = new StringBuilder();
         for (int i = 1; i < lists.size(); i++) {
             List<String> line = lists.get(i);
@@ -73,7 +79,7 @@ public class CreateFile {
             }
 
         }
-        String outputFile = "D:\\tmp\\数据需求_20260130\\数据需求_X_" + month + ".sql";
+        String outputFile = "D:\\tmp\\数据需求_20260710\\数据需求_X_" + month + ".sql";
 
         System.out.println("sheet=" + month + "，总记录" + count + "条。");
         try (FileWriter fw = new FileWriter(outputFile);) {
@@ -85,16 +91,52 @@ public class CreateFile {
 
 
     @Test
+    public void generateByExtra() throws IOException {
+        Workbook workbook = POIUtil.getWorkbook("D:\\tmp\\extra_source.xlsx");
+        List<List<String>> lists = POIUtil.readExcelValue(workbook, 0);
+        if (CollectionUtils.isEmpty(lists)) {
+            System.err.println("未获取到数据！！！！");
+            return;
+        }
+        int count = 0;
+        String sql = "insert into t_data_export_temp(id,khh,extra) values(func_nextid('t_data_export_temp'),'%s','%s');";
+        StringBuilder sqlText = new StringBuilder();
+        for (int i = 1; i < lists.size(); i++) {
+            List<String> line = lists.get(i);
+            String custNo = line.get(0);
+            String extra = line.get(1);
+            if (StringUtils.isNotBlank(custNo)) {
+                System.out.println("客户号：" + custNo + ",extra=" + extra);
+                if (sqlText.length() > 0) {
+                    sqlText.append("\n");
+                }
+                sqlText.append(String.format(sql, custNo, extra));
+                count++;
+            }
+
+        }
+        String outputFile = "D:\\tmp\\" + "extra_source.sql";
+
+        System.out.println("总记录" + count + "条。");
+        try (FileWriter fw = new FileWriter(outputFile);) {
+            fw.write(sqlText.toString());
+        }
+
+
+    }
+
+
+    @Test
     public void genenateSoftAccessFile() throws IOException {
         String sheetName = "sheet2";
-        Workbook workbook = POIUtil.getWorkbook("D:\\tmp\\测试.xlsx");
+        Workbook workbook = POIUtil.getWorkbook("D:\\tmp\\世纪大道分公司外接申请.xlsx");
         List<List<String>> lists = POIUtil.readExcelValue(workbook, sheetName);
         if (CollectionUtils.isEmpty(lists)) {
             System.err.println("sheet=" + sheetName + "未获取到数据！！！！");
             return;
         }
         int count = 0;
-        String sql = "insert into t_temp2(ID,KHH,KHH2,RQ,JYXT,APPID) values(seq_temp.nextval,'%s','%s',%d,'%s','%s');";
+        String sql = "insert into TWBJR_EXPORT_TEMP(ID,KHH,KHH2,RQ,JYXT,APPID) values(func_nextid('TWBJR_EXPORT_TEMP'),'%s','%s',%d,'%s','%s');";
         StringBuilder sqlText = new StringBuilder();
         for (int i = 1; i < lists.size(); i++) {
             List<String> line = lists.get(i);
@@ -113,7 +155,7 @@ public class CreateFile {
             }
 
         }
-        String outputFile = "D:\\tmp\\测试.sql";
+        String outputFile = "D:\\tmp\\数据需求_世纪大道分公司外接申请.sql";
 
         System.out.println("sheet=" + sheetName + "，总记录" + count + "条。");
         try (FileWriter fw = new FileWriter(outputFile);) {

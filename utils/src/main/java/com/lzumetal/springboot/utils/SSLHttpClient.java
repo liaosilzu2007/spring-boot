@@ -24,8 +24,8 @@ public class SSLHttpClient {
 
 
     /**
-     * 获取https请求的默认HttpClient客户端
-     * @return  HttpClient实例
+     * 获取https请求的默认httpclient客户端
+     * @return  httpclient实例
      */
     public static CloseableHttpClient getNoVerifyCaHttpsClient() {
         SSLConnectionSocketFactory sslSocketFactory;
