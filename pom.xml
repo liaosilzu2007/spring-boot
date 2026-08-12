@@ -72,7 +72,7 @@
         <joda-time.version>2.9.9</joda-time.version>
         <pinyin4j.version>2.5.1</pinyin4j.version>
         <jjwt.token.version>0.9.1</jjwt.token.version>
-        <elasticsearch.version>6.8.0</elasticsearch.version>
+        <elasticsearch.version>7.12.0</elasticsearch.version>
         <spring.data.elasticsearch.version>3.2.3.RELEASE</spring.data.elasticsearch.version>
         <spring-kafka.version>2.2.14.RELEASE</spring-kafka.version>
         <commons-pool2.version>2.9.0</commons-pool2.version>
