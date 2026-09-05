@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class StringUtil {
 
     /* 因为o和0,l和1很难区分,去掉大小写的o和小写l */
-    private static final String SEED = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz";
+    private static final String SEED = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz!#$%^*_";
 
 
     private static final Pattern MOBILE_PATTERN = Pattern.compile("^1[3456789]\\d{9}$");

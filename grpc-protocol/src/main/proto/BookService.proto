@@ -1,0 +1,70 @@
+//proto 语法版本
+syntax = "proto3";
+
+option java_package = "com.lzumetal.springboot.grpc.protocol";    //生成的文件所在包
+option java_outer_classname = "BookServiceProto";      //生成的外层接口文件名称（不能与内部 service/message 同名）
+option java_multiple_files = true;    //每个 message 单独生成一个 Java 文件
+
+//命名空间
+//package com.lzumetal.springboot.grpc.protocol;
+
+
+//可以使用 import 导入其他 proto 文件中的定义
+//import "other.proto";
+
+//引入 google.protobuf.Empty 用于无参数的 RPC 方法
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+//message 定义pojo类
+message CommonResponse {
+  string code = 1;
+  string message = 2;
+}
+
+message BookResponse {
+  int32 id = 1;
+  string bookName = 2;
+  string author = 3;
+  string price = 4;
+  google.protobuf.Timestamp createTime = 5;
+}
+
+message BookListResponse {
+  repeated BookResponse bookList = 1;
+  int32 total = 2;
+}
+
+message BookAddRequest {
+  string bookName = 1;
+  string author = 2;
+}
+
+message BookGetByIdRequest {
+  int32 id = 1;
+}
+
+message BookListByIdsRequest {
+  repeated int32 ids = 1;
+}
+
+//service 定义接口及 RPC 方法
+service BookService {
+
+  rpc GetById (BookGetByIdRequest) returns (BookResponse) {}    //根据id查询
+  rpc Add (BookAddRequest) returns (CommonResponse) {}    //添加
+  //在 proto3 中，RPC 方法的请求参数不能为空 ()，必须指定一个消息类型。
+  //使用标准库中的 Empty 类型，是 gRPC 中表示"无请求参数"的标准做法。
+  rpc listAll (google.protobuf.Empty) returns (BookListResponse) {}    //查询所有
+  /*
+  proto3 中要表达"多条"，有两种方式：
+  1. 用 repeated 字段包装，比如 BookListResponse。
+  2. 使用 stream 关键字，表示"多条"BookResponse，逐条推送。
+  */
+  rpc listByIds (BookListByIdsRequest) returns (stream BookResponse) {}    //根据id列表查询
+
+
+}
+
+
+
