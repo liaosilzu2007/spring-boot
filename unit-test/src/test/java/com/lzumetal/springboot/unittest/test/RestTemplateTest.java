@@ -1,6 +1,6 @@
-package com.lzumetal.springboot.mybatis.test;
+package com.lzumetal.springboot.unittest.test;
 
-import com.lzumetal.springboot.mybatis.StartupApplication;
+import com.lzumetal.springboot.unittest.StartupApplication;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;

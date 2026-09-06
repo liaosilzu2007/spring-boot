@@ -1,8 +1,8 @@
-package com.lzumetal.springboot.mybatis.controller;
+package com.lzumetal.springboot.unittest.controller;
 
 import com.google.gson.Gson;
-import com.lzumetal.springboot.mybatis.entity.Book;
-import com.lzumetal.springboot.mybatis.service.BookService;
+import com.lzumetal.springboot.unittest.entity.Book;
+import com.lzumetal.springboot.unittest.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +37,7 @@ public class BookController {
     public String getBoodInfo2(Integer id, String name) {
         Book book = new Book();
         book.setId(id);
-        book.setName(name);
+        book.setBookName(name);
         return gson.toJson(book);
     }
 

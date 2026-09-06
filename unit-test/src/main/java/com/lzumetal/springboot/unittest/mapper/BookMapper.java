@@ -1,7 +1,7 @@
-package com.lzumetal.springboot.mybatis.mapper;
+package com.lzumetal.springboot.unittest.mapper;
 
 
-import com.lzumetal.springboot.mybatis.entity.Book;
+import com.lzumetal.springboot.unittest.entity.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.mybatis;
+package com.lzumetal.springboot.unittest;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

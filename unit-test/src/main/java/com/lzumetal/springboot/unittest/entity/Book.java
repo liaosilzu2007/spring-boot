@@ -1,10 +1,10 @@
-package com.lzumetal.springboot.mybatis.entity;
+package com.lzumetal.springboot.unittest.entity;
 
 public class Book {
 
     private Integer id;
 
-    private String name;
+    private String bookName;
 
     private String author;
 
@@ -18,12 +18,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getBookName() {
+        return bookName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setBookName(String bookName) {
+        this.bookName = bookName == null ? null : bookName.trim();
     }
 
     public String getAuthor() {

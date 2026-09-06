@@ -1,7 +1,7 @@
-package com.lzumetal.springboot.mybatis.service;
+package com.lzumetal.springboot.unittest.service;
 
-import com.lzumetal.springboot.mybatis.entity.Book;
-import com.lzumetal.springboot.mybatis.mapper.BookMapper;
+import com.lzumetal.springboot.unittest.entity.Book;
+import com.lzumetal.springboot.unittest.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
