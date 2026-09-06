@@ -21,6 +21,7 @@
                         password="123456">
         </jdbcConnection>
 
+        <!-- oracle 数据库的写法 -->
         <!-- <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
             connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:temp_db"
             userId="sa"
@@ -36,21 +37,21 @@
 
 
         <!-- 自动根据数据库表生成pojo实体类-->
-        <javaModelGenerator targetPackage="com.lzumetal.springboot.mybatis.generator"
+        <javaModelGenerator targetPackage="com.lzumetal.springboot.unittest.generator"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- 自动生成mybatis的mapper.xml文件-->
-        <sqlMapGenerator targetPackage="com.lzumetal.springboot.mybatis.generator"
+        <sqlMapGenerator targetPackage="com.lzumetal.springboot.unittest.generator"
                          targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
 
         <!-- 生成mybatis的mapper接口类文件-->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.lzumetal.springboot.mybatis.generator"
+                             targetPackage="com.lzumetal.springboot.unittest.generator"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>

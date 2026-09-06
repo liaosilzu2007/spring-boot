@@ -4,28 +4,50 @@
 
   <resultMap id="BookResultMap" type="com.lzumetal.springboot.mybatis.entity.Book">
     <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
     <result column="author" jdbcType="VARCHAR" property="author" />
     <result column="price" jdbcType="DOUBLE" property="price" />
   </resultMap>
 
   <insert id="insert" parameterType="com.lzumetal.springboot.mybatis.entity.Book">
-    insert into tbook (id, name, author,
+    insert into tbook (id, book_name, author,
       price)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
       #{price,jdbcType=DOUBLE})
   </insert>
   <select id="selectAll" resultMap="BookResultMap">
-    select id, name, author, price
+    select id, book_name, author, price
     from tbook
   </select>
   <select id="getById" resultMap="BookResultMap">
-    select id, name, author, price
+    select id, book_name, author, price
     from tbook
     WHERE id = #{id}
   </select>
-  
-  <insert id="batchInsert" parameterType="com.lzumetal.springboot.mybatis.entity.Book">
+  <select id="listByParam" resultType="com.lzumetal.springboot.mybatis.entity.Book">
+    select id, book_name, author, price
+    from tbook
+    <where>
+      <if test="param.bookName != null">
+        and name = #{param.bookName}
+      </if>
+      <if test="param.author != null">
+        and author = #{param.author}
+      </if>
+      <if test="param.publisher != null">
+        and publisher = #{param.publisher}
+      </if>
+      <if test="param.price != null">
+        and price = #{param.price}
+      </if>
+    </where>
+  </select>
 
+  <insert id="batchInsert" parameterType="com.lzumetal.springboot.mybatis.entity.Book">
+    insert into tbook (id, book_name, author, price)
+    values
+    <foreach collection="books" item="book" separator=",">
+      (#{book.id,jdbcType=INTEGER}, #{book.bookName,jdbcType=VARCHAR}, #{book.author,jdbcType=VARCHAR}, #{book.price,jdbcType=DOUBLE})
+    </foreach>
   </insert>
 </mapper>

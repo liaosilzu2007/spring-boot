@@ -1,44 +1,33 @@
 package com.lzumetal.springboot.mybatis.entity;
 
+import lombok.Data;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+@Data
 public class Book {
 
     private Integer id;
 
-    private String name;
+    /* 书名 */
+    private String bookName;
 
+    /* 作者 */
     private String author;
 
-    private Double price;
+    /* 价格 */
+    private BigDecimal price;
 
-    public Integer getId() {
-        return id;
-    }
+    /* 类别 */
+    private Integer classify;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    /* 出版社 */
+    private String publisher;
 
-    public String getName() {
-        return name;
-    }
+    /* 创建时间 */
+    private Date createTime;
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
 
-    public String getAuthor() {
-        return author;
-    }
 
-    public void setAuthor(String author) {
-        this.author = author == null ? null : author.trim();
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 }

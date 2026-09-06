@@ -1,7 +1,7 @@
 package com.lzumetal.springboot.mybatis.service;
 
-import com.lzumetal.springboot.mybatis.entity.TestTime;
 import com.lzumetal.springboot.mybatis.mapper.TestTimeMapper;
+import com.lzumetal.springboot.mybatis.entity.TestTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
