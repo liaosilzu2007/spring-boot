@@ -1,3 +1,18 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: local-grpc-client
+
 grpc:
-  server:
-    port: 9091
+  client:
+    local-grpc-server:            # gRPC配置的名字，GrpcClient注解会用到
+      # gRPC服务端地址，支持三种scheme：static（静态直连）、dns（DNS解析）、discovery（通过注册中心动态发现）
+      address: 'static://127.0.0.1:9091'
+      # 是否启用长连接
+      enableKeepAlive: true
+      # 是否在没有调用的情况下也保持长连接
+      keepAliveWithoutCalls: true
+      # 长连接类型，可选值：plaintext、https
+      negotiationType: plaintext

@@ -2,7 +2,7 @@
 <configuration>
 
     <!--定义日志文件的存储目录（使用绝对路径） -->
-    <property name="LOG_HOME" value="D:\log\grpc-server"/>
+    <property name="LOG_HOME" value="D:\\log\\grpc-server"/>
     <!-- 定义日志格式：
             %d：表示日期，
             %thread：线程名，

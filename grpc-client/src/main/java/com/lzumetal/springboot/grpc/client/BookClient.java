@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BookClient {
 
-    @GrpcClient("grpc-server")
+    @GrpcClient("local-grpc-server")
     private BookServiceGrpc.BookServiceBlockingStub stub;
 
 
