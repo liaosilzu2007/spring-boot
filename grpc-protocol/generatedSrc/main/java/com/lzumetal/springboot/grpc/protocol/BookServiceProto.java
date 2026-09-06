@@ -56,15 +56,15 @@ public final class BookServiceProto {
       "\n\021BookService.proto\032\033google/protobuf/emp" +
       "ty.proto\032\037google/protobuf/timestamp.prot" +
       "o\"/\n\016CommonResponse\022\014\n\004code\030\001 \001(\t\022\017\n\007mes" +
-      "sage\030\002 \001(\t\"{\n\014BookResponse\022\n\n\002id\030\001 \001(\005\022\020" +
+      "sage\030\002 \001(\t\"{\n\014BookResponse\022\n\n\002id\030\001 \001(\003\022\020" +
       "\n\010bookName\030\002 \001(\t\022\016\n\006author\030\003 \001(\t\022\r\n\005pric" +
       "e\030\004 \001(\t\022.\n\ncreateTime\030\005 \001(\0132\032.google.pro" +
       "tobuf.Timestamp\"B\n\020BookListResponse\022\037\n\010b" +
       "ookList\030\001 \003(\0132\r.BookResponse\022\r\n\005total\030\002 " +
       "\001(\005\"A\n\016BookAddRequest\022\020\n\010bookName\030\001 \001(\t\022" +
       "\016\n\006author\030\002 \001(\t\022\r\n\005price\030\003 \001(\t\" \n\022BookGe" +
-      "tByIdRequest\022\n\n\002id\030\001 \001(\005\"#\n\024BookListById" +
-      "sRequest\022\013\n\003ids\030\001 \003(\0052\330\001\n\013BookService\022/\n" +
+      "tByIdRequest\022\n\n\002id\030\001 \001(\003\"#\n\024BookListById" +
+      "sRequest\022\013\n\003ids\030\001 \003(\0032\330\001\n\013BookService\022/\n" +
       "\007GetById\022\023.BookGetByIdRequest\032\r.BookResp" +
       "onse\"\000\022)\n\003Add\022\017.BookAddRequest\032\017.CommonR" +
       "esponse\"\000\0226\n\007listAll\022\026.google.protobuf.E" +

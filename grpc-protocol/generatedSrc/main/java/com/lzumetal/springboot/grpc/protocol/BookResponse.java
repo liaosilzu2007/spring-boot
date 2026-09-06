@@ -47,13 +47,13 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ID_FIELD_NUMBER = 1;
-  private int id_ = 0;
+  private long id_ = 0L;
   /**
-   * <code>int32 id = 1;</code>
+   * <code>int64 id = 1;</code>
    * @return The id.
    */
   @java.lang.Override
-  public int getId() {
+  public long getId() {
     return id_;
   }
 
@@ -214,8 +214,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0) {
-      output.writeInt32(1, id_);
+    if (id_ != 0L) {
+      output.writeInt64(1, id_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookName_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, bookName_);
@@ -238,9 +238,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0) {
+    if (id_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, id_);
+        .computeInt64Size(1, id_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bookName_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, bookName_);
@@ -295,7 +295,8 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getId();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getId());
     hash = (37 * hash) + BOOKNAME_FIELD_NUMBER;
     hash = (53 * hash) + getBookName().hashCode();
     hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
@@ -435,7 +436,7 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      id_ = 0;
+      id_ = 0L;
       bookName_ = "";
       author_ = "";
       price_ = "";
@@ -540,7 +541,7 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.lzumetal.springboot.grpc.protocol.BookResponse other) {
       if (other == com.lzumetal.springboot.grpc.protocol.BookResponse.getDefaultInstance()) return this;
-      if (other.getId() != 0) {
+      if (other.getId() != 0L) {
         setId(other.getId());
       }
       if (!other.getBookName().isEmpty()) {
@@ -588,7 +589,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              id_ = input.readInt32();
+              id_ = input.readInt64();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
@@ -631,21 +632,21 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private int id_ ;
+    private long id_ ;
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int64 id = 1;</code>
      * @return The id.
      */
     @java.lang.Override
-    public int getId() {
+    public long getId() {
       return id_;
     }
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int64 id = 1;</code>
      * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setId(int value) {
+    public Builder setId(long value) {
       
       id_ = value;
       bitField0_ |= 0x00000001;
@@ -653,12 +654,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int64 id = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      id_ = 0;
+      id_ = 0L;
       onChanged();
       return this;
     }

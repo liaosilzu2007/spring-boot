@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private BookListByIdsRequest() {
-    ids_ = emptyIntList();
+    ids_ = emptyLongList();
   }
 
   @java.lang.Override
@@ -46,30 +46,30 @@ private static final long serialVersionUID = 0L;
 
   public static final int IDS_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.IntList ids_;
+  private com.google.protobuf.Internal.LongList ids_;
   /**
-   * <code>repeated int32 ids = 1;</code>
+   * <code>repeated int64 ids = 1;</code>
    * @return A list containing the ids.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Integer>
+  public java.util.List<java.lang.Long>
       getIdsList() {
     return ids_;
   }
   /**
-   * <code>repeated int32 ids = 1;</code>
+   * <code>repeated int64 ids = 1;</code>
    * @return The count of ids.
    */
   public int getIdsCount() {
     return ids_.size();
   }
   /**
-   * <code>repeated int32 ids = 1;</code>
+   * <code>repeated int64 ids = 1;</code>
    * @param index The index of the element to return.
    * @return The ids at the given index.
    */
-  public int getIds(int index) {
-    return ids_.getInt(index);
+  public long getIds(int index) {
+    return ids_.getLong(index);
   }
   private int idsMemoizedSerializedSize = -1;
 
@@ -93,7 +93,7 @@ private static final long serialVersionUID = 0L;
       output.writeUInt32NoTag(idsMemoizedSerializedSize);
     }
     for (int i = 0; i < ids_.size(); i++) {
-      output.writeInt32NoTag(ids_.getInt(i));
+      output.writeInt64NoTag(ids_.getLong(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -108,7 +108,7 @@ private static final long serialVersionUID = 0L;
       int dataSize = 0;
       for (int i = 0; i < ids_.size(); i++) {
         dataSize += com.google.protobuf.CodedOutputStream
-          .computeInt32SizeNoTag(ids_.getInt(i));
+          .computeInt64SizeNoTag(ids_.getLong(i));
       }
       size += dataSize;
       if (!getIdsList().isEmpty()) {
@@ -279,7 +279,7 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      ids_ = emptyIntList();
+      ids_ = emptyLongList();
       return this;
     }
 
@@ -405,9 +405,9 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              int v = input.readInt32();
+              long v = input.readInt64();
               ensureIdsIsMutable();
-              ids_.addInt(v);
+              ids_.addLong(v);
               break;
             } // case 8
             case 10: {
@@ -415,7 +415,7 @@ private static final long serialVersionUID = 0L;
               int limit = input.pushLimit(length);
               ensureIdsIsMutable();
               while (input.getBytesUntilLimit() > 0) {
-                ids_.addInt(input.readInt32());
+                ids_.addLong(input.readInt64());
               }
               input.popLimit(limit);
               break;
@@ -437,7 +437,7 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.google.protobuf.Internal.IntList ids_ = emptyIntList();
+    private com.google.protobuf.Internal.LongList ids_ = emptyLongList();
     private void ensureIdsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         ids_ = mutableCopy(ids_);
@@ -445,62 +445,62 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated int32 ids = 1;</code>
+     * <code>repeated int64 ids = 1;</code>
      * @return A list containing the ids.
      */
-    public java.util.List<java.lang.Integer>
+    public java.util.List<java.lang.Long>
         getIdsList() {
       return ((bitField0_ & 0x00000001) != 0) ?
                java.util.Collections.unmodifiableList(ids_) : ids_;
     }
     /**
-     * <code>repeated int32 ids = 1;</code>
+     * <code>repeated int64 ids = 1;</code>
      * @return The count of ids.
      */
     public int getIdsCount() {
       return ids_.size();
     }
     /**
-     * <code>repeated int32 ids = 1;</code>
+     * <code>repeated int64 ids = 1;</code>
      * @param index The index of the element to return.
      * @return The ids at the given index.
      */
-    public int getIds(int index) {
-      return ids_.getInt(index);
+    public long getIds(int index) {
+      return ids_.getLong(index);
     }
     /**
-     * <code>repeated int32 ids = 1;</code>
+     * <code>repeated int64 ids = 1;</code>
      * @param index The index to set the value at.
      * @param value The ids to set.
      * @return This builder for chaining.
      */
     public Builder setIds(
-        int index, int value) {
+        int index, long value) {
       
       ensureIdsIsMutable();
-      ids_.setInt(index, value);
+      ids_.setLong(index, value);
       onChanged();
       return this;
     }
     /**
-     * <code>repeated int32 ids = 1;</code>
+     * <code>repeated int64 ids = 1;</code>
      * @param value The ids to add.
      * @return This builder for chaining.
      */
-    public Builder addIds(int value) {
+    public Builder addIds(long value) {
       
       ensureIdsIsMutable();
-      ids_.addInt(value);
+      ids_.addLong(value);
       onChanged();
       return this;
     }
     /**
-     * <code>repeated int32 ids = 1;</code>
+     * <code>repeated int64 ids = 1;</code>
      * @param values The ids to add.
      * @return This builder for chaining.
      */
     public Builder addAllIds(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
+        java.lang.Iterable<? extends java.lang.Long> values) {
       ensureIdsIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, ids_);
@@ -508,11 +508,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated int32 ids = 1;</code>
+     * <code>repeated int64 ids = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearIds() {
-      ids_ = emptyIntList();
+      ids_ = emptyLongList();
       bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;

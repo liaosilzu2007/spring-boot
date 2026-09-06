@@ -24,7 +24,7 @@ message CommonResponse {
 }
 
 message BookResponse {
-  int32 id = 1;
+  int64 id = 1;
   string bookName = 2;
   string author = 3;
   string price = 4;
@@ -43,11 +43,11 @@ message BookAddRequest {
 }
 
 message BookGetByIdRequest {
-  int32 id = 1;
+  int64 id = 1;
 }
 
 message BookListByIdsRequest {
-  repeated int32 ids = 1;
+  repeated int64 ids = 1;
 }
 
 //service 定义接口及 RPC 方法

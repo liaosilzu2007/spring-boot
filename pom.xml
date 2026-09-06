@@ -48,6 +48,7 @@
         <module>webservice-server</module>
         <module>grpc-server</module>
         <module>grpc-protocol</module>
+        <module>grpc-client</module>
     </modules>
 
     <properties>
@@ -352,6 +353,13 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>2.2.2</version>
+            </dependency>
+
+            <!-- mybatis 分页：pagehelper -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.4.6</version>
             </dependency>
 
         </dependencies>

@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lzumetal.springboot.mybatis.mapper.BookMapper">
+<mapper namespace="com.lzumetal.springboot.grpc.server.dao.BookDao">
 
     <resultMap id="BookResultMap" type="com.lzumetal.springboot.grpc.server.pojo.Book">
-        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="id" jdbcType="BIGINT" property="id" />
         <result column="book_name" jdbcType="VARCHAR" property="bookName" />
         <result column="author" jdbcType="VARCHAR" property="author" />
         <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     </resultMap>
 
-    <select id="selectById" parameterType="Long" resultType="com.lzumetal.springboot.grpc.server.pojo.Book">
-        SELECT id, book_name, author, price
-        FROM book
+    <select id="selectById" parameterType="Long" resultMap="BookResultMap">
+        SELECT id, book_name, author, price, create_time
+        FROM tbook
         WHERE id = #{id}
     </select>
+
+    <select id="listAll" resultType="com.lzumetal.springboot.grpc.server.pojo.Book">
+        select id, book_name, author, price, create_time
+        from tbook
+    </select>
+
+    <select id="ListByIds" resultType="com.lzumetal.springboot.grpc.server.pojo.Book">
+        select id, book_name, author, price, create_time
+        from tbook
+        where id in
+        <foreach item="id" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    <select id="count" resultType="java.lang.Long">
+        select count(*)
+        from tbook
+        <where>
+            <if test="params != null">
+                <if test="params['ids'] != null and params['ids'].size() > 0">
+                    and id in
+                    <foreach item="id" collection="params.ids" open="(" separator="," close=")">
+                        #{id}
+                    </foreach>
+                </if>
+            </if>
+            <if test="params != null">
+                <if test="params['bookName'] != null and params['bookName'] != ''">
+                    and book_name like CONCAT('%', #{params.bookName}, '%')
+                </if>
+            </if>
+            <if test="params['author'] != null and params['author'] != ''">
+                and author like CONCAT('%', #{params.author}, '%')
+            </if>
+            <if test="params['price'] != null">
+                and price = #{params.price}
+            </if>
+        </where>
+    </select>
+
 
 </mapper>

@@ -8,19 +8,19 @@ public interface BookListByIdsRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated int32 ids = 1;</code>
+   * <code>repeated int64 ids = 1;</code>
    * @return A list containing the ids.
    */
-  java.util.List<java.lang.Integer> getIdsList();
+  java.util.List<java.lang.Long> getIdsList();
   /**
-   * <code>repeated int32 ids = 1;</code>
+   * <code>repeated int64 ids = 1;</code>
    * @return The count of ids.
    */
   int getIdsCount();
   /**
-   * <code>repeated int32 ids = 1;</code>
+   * <code>repeated int64 ids = 1;</code>
    * @param index The index of the element to return.
    * @return The ids at the given index.
    */
-  int getIds(int index);
+  long getIds(int index);
 }

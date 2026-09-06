@@ -4,6 +4,7 @@ import com.lzumetal.springboot.grpc.protocol.BookGetByIdRequest;
 import com.lzumetal.springboot.grpc.protocol.BookResponse;
 import com.lzumetal.springboot.grpc.server.dao.BookDao;
 import com.lzumetal.springboot.grpc.server.pojo.Book;
+import com.lzumetal.springboot.grpc.server.service.impl.proto.BookServiceGrpcImpl;
 import io.grpc.stub.StreamObserver;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +27,7 @@ import static org.mockito.Mockito.*;
  * @author liaosi
  */
 @RunWith(MockitoJUnitRunner.class)
-public class BookServiceImplTest {
+public class BookServiceGrpcImplTest {
 
     @Mock
     private BookDao bookDao;
@@ -35,7 +36,7 @@ public class BookServiceImplTest {
     private StreamObserver<BookResponse> responseObserver;
 
     @InjectMocks
-    private BookServiceImpl bookService;
+    private BookServiceGrpcImpl bookService;
 
     private Book testBook;
 

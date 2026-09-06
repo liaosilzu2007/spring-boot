@@ -1,0 +1,87 @@
+[INFO ] 2026-09-06 18:12:50 499 [main] c.l.s.g.s.GrpcServerApplication.logStarting - Starting GrpcServerApplication on liaosi-laptop with PID 35996 (D:\DevelopWorkspace\Java\spring-boot\grpc-server\target\classes started by Administrator in D:\DevelopWorkspace\Java\spring-boot)
+[INFO ] 2026-09-06 18:12:50 501 [main] c.l.s.g.s.GrpcServerApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+[INFO ] 2026-09-06 18:12:51 276 [main] c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor.postProcessBeanFactory - Post-processing PropertySource instances
+[INFO ] 2026-09-06 18:12:51 298 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+[INFO ] 2026-09-06 18:12:51 299 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:12:51 299 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:12:51 301 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource systemProperties [org.springframework.core.env.MapPropertySource] to EncryptableMapPropertySourceWrapper
+[INFO ] 2026-09-06 18:12:51 302 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+[INFO ] 2026-09-06 18:12:51 302 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:12:51 302 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource applicationConfig: [classpath:/application.yml] [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+[INFO ] 2026-09-06 18:12:51 360 [main] c.u.j.f.DefaultLazyPropertyFilter.lambda$null$2 - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+[INFO ] 2026-09-06 18:12:51 398 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$19fde07f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2026-09-06 18:12:51 695 [main] o.s.b.w.e.t.TomcatWebServer.initialize - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2026-09-06 18:12:51 716 [main] o.a.c.h.Http11NioProtocol.log - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2026-09-06 18:12:51 726 [main] o.a.c.c.StandardService.log - Starting service [Tomcat]
+[INFO ] 2026-09-06 18:12:51 726 [main] o.a.c.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/9.0.19]
+[INFO ] 2026-09-06 18:12:51 865 [main] o.a.c.c.C.[.[.[/].log - Initializing Spring embedded WebApplicationContext
+[INFO ] 2026-09-06 18:12:51 865 [main] o.s.w.c.ContextLoader.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1325 ms
+[INFO ] 2026-09-06 18:12:52 016 [main] c.u.j.r.DefaultLazyPropertyResolver.lambda$null$2 - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+[INFO ] 2026-09-06 18:12:52 025 [main] c.u.j.d.DefaultLazyPropertyDetector.lambda$null$2 - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+[INFO ] 2026-09-06 18:12:52 455 [main] o.s.s.c.ThreadPoolTaskExecutor.initialize - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2026-09-06 18:12:52 624 [main] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration.shadedNettyGrpcServerFactory - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+[INFO ] 2026-09-06 18:12:52 939 [main] n.d.b.g.s.s.AbstractGrpcServerFactory.configureServices - Registered gRPC service: BookService, bean: bookServiceGrpcImpl, class: com.lzumetal.springboot.grpc.server.service.impl.proto.BookServiceGrpcImpl
+[INFO ] 2026-09-06 18:12:53 478 [main] n.d.b.g.s.s.GrpcServerLifecycle.createAndStartGrpcServer - gRPC Server started, listening on address: *, port: 9090
+[INFO ] 2026-09-06 18:12:53 488 [main] o.a.c.h.Http11NioProtocol.log - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2026-09-06 18:12:53 504 [main] o.s.b.w.e.t.TomcatWebServer.start - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2026-09-06 18:12:53 505 [main] c.l.s.g.s.GrpcServerApplication.logStarted - Started GrpcServerApplication in 3.371 seconds (JVM running for 4.232)
+[INFO ] 2026-09-06 18:18:46 934 [Thread-9] n.d.b.g.s.s.GrpcServerLifecycle.stopAndReleaseGrpcServer - Completed gRPC server shutdown
+[INFO ] 2026-09-06 18:18:46 938 [Thread-9] o.s.s.c.ThreadPoolTaskExecutor.shutdown - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2026-09-06 18:19:38 093 [main] c.l.s.g.s.GrpcServerApplication.logStarting - Starting GrpcServerApplication on liaosi-laptop with PID 39884 (D:\DevelopWorkspace\Java\spring-boot\grpc-server\target\classes started by Administrator in D:\DevelopWorkspace\Java\spring-boot)
+[INFO ] 2026-09-06 18:19:38 098 [main] c.l.s.g.s.GrpcServerApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+[INFO ] 2026-09-06 18:19:38 885 [main] c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor.postProcessBeanFactory - Post-processing PropertySource instances
+[INFO ] 2026-09-06 18:19:38 906 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+[INFO ] 2026-09-06 18:19:38 908 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:19:38 908 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:19:38 908 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource systemProperties [org.springframework.core.env.MapPropertySource] to EncryptableMapPropertySourceWrapper
+[INFO ] 2026-09-06 18:19:38 908 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+[INFO ] 2026-09-06 18:19:38 908 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:19:38 908 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource applicationConfig: [classpath:/application.yml] [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+[INFO ] 2026-09-06 18:19:38 927 [main] c.u.j.f.DefaultLazyPropertyFilter.lambda$null$2 - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+[INFO ] 2026-09-06 18:19:38 968 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e48af1e1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2026-09-06 18:19:39 298 [main] o.s.b.w.e.t.TomcatWebServer.initialize - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2026-09-06 18:19:39 317 [main] o.a.c.h.Http11NioProtocol.log - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2026-09-06 18:19:39 327 [main] o.a.c.c.StandardService.log - Starting service [Tomcat]
+[INFO ] 2026-09-06 18:19:39 337 [main] o.a.c.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/9.0.19]
+[INFO ] 2026-09-06 18:19:39 481 [main] o.a.c.c.C.[.[.[/].log - Initializing Spring embedded WebApplicationContext
+[INFO ] 2026-09-06 18:19:39 481 [main] o.s.w.c.ContextLoader.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1343 ms
+[INFO ] 2026-09-06 18:19:39 579 [main] c.u.j.r.DefaultLazyPropertyResolver.lambda$null$2 - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+[INFO ] 2026-09-06 18:19:39 584 [main] c.u.j.d.DefaultLazyPropertyDetector.lambda$null$2 - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+[INFO ] 2026-09-06 18:19:39 989 [main] o.s.s.c.ThreadPoolTaskExecutor.initialize - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2026-09-06 18:19:40 153 [main] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration.shadedNettyGrpcServerFactory - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+[INFO ] 2026-09-06 18:19:40 391 [main] n.d.b.g.s.s.AbstractGrpcServerFactory.configureServices - Registered gRPC service: BookService, bean: bookServiceGrpcImpl, class: com.lzumetal.springboot.grpc.server.service.impl.proto.BookServiceGrpcImpl
+[INFO ] 2026-09-06 18:19:41 046 [main] n.d.b.g.s.s.GrpcServerLifecycle.createAndStartGrpcServer - gRPC Server started, listening on address: *, port: 9091
+[INFO ] 2026-09-06 18:19:41 054 [main] o.a.c.h.Http11NioProtocol.log - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2026-09-06 18:19:41 069 [main] o.s.b.w.e.t.TomcatWebServer.start - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2026-09-06 18:19:41 070 [main] c.l.s.g.s.GrpcServerApplication.logStarted - Started GrpcServerApplication in 3.327 seconds (JVM running for 4.185)
+[INFO ] 2026-09-06 18:21:42 258 [Thread-10] n.d.b.g.s.s.GrpcServerLifecycle.stopAndReleaseGrpcServer - Completed gRPC server shutdown
+[INFO ] 2026-09-06 18:21:42 261 [Thread-10] o.s.s.c.ThreadPoolTaskExecutor.shutdown - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 2026-09-06 18:22:10 034 [main] c.l.s.g.s.GrpcServerApplication.logStarting - Starting GrpcServerApplication on liaosi-laptop with PID 40648 (D:\DevelopWorkspace\Java\spring-boot\grpc-server\target\classes started by Administrator in D:\DevelopWorkspace\Java\spring-boot)
+[INFO ] 2026-09-06 18:22:10 034 [main] c.l.s.g.s.GrpcServerApplication.logStartupProfileInfo - No active profile set, falling back to default profiles: default
+[INFO ] 2026-09-06 18:22:10 774 [main] c.u.j.c.EnableEncryptablePropertiesBeanFactoryPostProcessor.postProcessBeanFactory - Post-processing PropertySource instances
+[INFO ] 2026-09-06 18:22:10 795 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource configurationProperties [org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource] to AOP Proxy
+[INFO ] 2026-09-06 18:22:10 798 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource servletConfigInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:22:10 798 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource servletContextInitParams [org.springframework.core.env.PropertySource$StubPropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:22:10 798 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource systemProperties [org.springframework.core.env.MapPropertySource] to EncryptableMapPropertySourceWrapper
+[INFO ] 2026-09-06 18:22:10 798 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource systemEnvironment [org.springframework.boot.env.SystemEnvironmentPropertySourceEnvironmentPostProcessor$OriginAwareSystemEnvironmentPropertySource] to EncryptableSystemEnvironmentPropertySourceWrapper
+[INFO ] 2026-09-06 18:22:10 798 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource random [org.springframework.boot.env.RandomValuePropertySource] to EncryptablePropertySourceWrapper
+[INFO ] 2026-09-06 18:22:10 798 [main] c.u.j.EncryptablePropertySourceConverter.makeEncryptable - Converting PropertySource applicationConfig: [classpath:/application.yml] [org.springframework.boot.env.OriginTrackedMapPropertySource] to EncryptableMapPropertySourceWrapper
+[INFO ] 2026-09-06 18:22:10 823 [main] c.u.j.f.DefaultLazyPropertyFilter.lambda$null$2 - Property Filter custom Bean not found with name 'encryptablePropertyFilter'. Initializing Default Property Filter
+[INFO ] 2026-09-06 18:22:10 870 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$52c79570] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 2026-09-06 18:22:11 167 [main] o.s.b.w.e.t.TomcatWebServer.initialize - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2026-09-06 18:22:11 176 [main] o.a.c.h.Http11NioProtocol.log - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO ] 2026-09-06 18:22:11 190 [main] o.a.c.c.StandardService.log - Starting service [Tomcat]
+[INFO ] 2026-09-06 18:22:11 190 [main] o.a.c.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/9.0.19]
+[INFO ] 2026-09-06 18:22:11 339 [main] o.a.c.c.C.[.[.[/].log - Initializing Spring embedded WebApplicationContext
+[INFO ] 2026-09-06 18:22:11 339 [main] o.s.w.c.ContextLoader.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1273 ms
+[INFO ] 2026-09-06 18:22:11 455 [main] c.u.j.r.DefaultLazyPropertyResolver.lambda$null$2 - Property Resolver custom Bean not found with name 'encryptablePropertyResolver'. Initializing Default Property Resolver
+[INFO ] 2026-09-06 18:22:11 458 [main] c.u.j.d.DefaultLazyPropertyDetector.lambda$null$2 - Property Detector custom Bean not found with name 'encryptablePropertyDetector'. Initializing Default Property Detector
+[INFO ] 2026-09-06 18:22:11 913 [main] o.s.s.c.ThreadPoolTaskExecutor.initialize - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 2026-09-06 18:22:12 048 [main] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration.shadedNettyGrpcServerFactory - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+[INFO ] 2026-09-06 18:22:12 278 [main] n.d.b.g.s.s.AbstractGrpcServerFactory.configureServices - Registered gRPC service: BookService, bean: bookServiceGrpcImpl, class: com.lzumetal.springboot.grpc.server.service.impl.proto.BookServiceGrpcImpl
+[INFO ] 2026-09-06 18:22:12 817 [main] n.d.b.g.s.s.GrpcServerLifecycle.createAndStartGrpcServer - gRPC Server started, listening on address: *, port: 9090
+[INFO ] 2026-09-06 18:22:12 833 [main] o.a.c.h.Http11NioProtocol.log - Starting ProtocolHandler ["http-nio-8080"]
+[INFO ] 2026-09-06 18:22:12 838 [main] o.s.b.w.e.t.TomcatWebServer.start - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2026-09-06 18:22:12 849 [main] c.l.s.g.s.GrpcServerApplication.logStarted - Started GrpcServerApplication in 3.151 seconds (JVM running for 3.928)
+[INFO ] 2026-09-06 18:40:43 789 [Thread-9] n.d.b.g.s.s.GrpcServerLifecycle.stopAndReleaseGrpcServer - Completed gRPC server shutdown
+[INFO ] 2026-09-06 18:40:43 797 [Thread-9] o.s.s.c.ThreadPoolTaskExecutor.shutdown - Shutting down ExecutorService 'applicationTaskExecutor'
