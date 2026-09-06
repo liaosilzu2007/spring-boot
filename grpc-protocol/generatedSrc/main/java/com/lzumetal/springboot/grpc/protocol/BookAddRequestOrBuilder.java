@@ -30,4 +30,16 @@ public interface BookAddRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAuthorBytes();
+
+  /**
+   * <code>string price = 3;</code>
+   * @return The price.
+   */
+  java.lang.String getPrice();
+  /**
+   * <code>string price = 3;</code>
+   * @return The bytes for price.
+   */
+  com.google.protobuf.ByteString
+      getPriceBytes();
 }

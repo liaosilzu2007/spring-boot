@@ -4,9 +4,15 @@
 
     <resultMap id="BookResultMap" type="com.lzumetal.springboot.grpc.server.pojo.Book">
         <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="book_name" jdbcType="VARCHAR" property="bookName" />
         <result column="author" jdbcType="VARCHAR" property="author" />
-        <result column="price" jdbcType="DOUBLE" property="price" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
     </resultMap>
+
+    <select id="selectById" parameterType="Long" resultType="com.lzumetal.springboot.grpc.server.pojo.Book">
+        SELECT id, book_name, author, price
+        FROM book
+        WHERE id = #{id}
+    </select>
 
 </mapper>

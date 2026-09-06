@@ -1,0 +1,1 @@
+[INFO ] 2026-09-06 11:31:57 556 [main] c.l.s.g.s.i.BookServiceImpl.getById - 查询完成|1|Book(id=1, bookName=Spring Boot实战, author=廖思, price=59.90, createTime=Sun Sep 06 11:31:57 CST 2026)

@@ -18,6 +18,7 @@ private static final long serialVersionUID = 0L;
   private BookAddRequest() {
     bookName_ = "";
     author_ = "";
+    price_ = "";
   }
 
   @java.lang.Override
@@ -123,6 +124,45 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int PRICE_FIELD_NUMBER = 3;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object price_ = "";
+  /**
+   * <code>string price = 3;</code>
+   * @return The price.
+   */
+  @java.lang.Override
+  public java.lang.String getPrice() {
+    java.lang.Object ref = price_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      price_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string price = 3;</code>
+   * @return The bytes for price.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getPriceBytes() {
+    java.lang.Object ref = price_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      price_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -143,6 +183,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(author_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, author_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(price_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, price_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -157,6 +200,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(author_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, author_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(price_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, price_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -177,6 +223,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getBookName())) return false;
     if (!getAuthor()
         .equals(other.getAuthor())) return false;
+    if (!getPrice()
+        .equals(other.getPrice())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -192,6 +240,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getBookName().hashCode();
     hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
     hash = (53 * hash) + getAuthor().hashCode();
+    hash = (37 * hash) + PRICE_FIELD_NUMBER;
+    hash = (53 * hash) + getPrice().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -323,6 +373,7 @@ private static final long serialVersionUID = 0L;
       bitField0_ = 0;
       bookName_ = "";
       author_ = "";
+      price_ = "";
       return this;
     }
 
@@ -361,6 +412,9 @@ private static final long serialVersionUID = 0L;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.author_ = author_;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.price_ = price_;
       }
     }
 
@@ -418,6 +472,11 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000002;
         onChanged();
       }
+      if (!other.getPrice().isEmpty()) {
+        price_ = other.price_;
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -454,6 +513,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000002;
               break;
             } // case 18
+            case 26: {
+              price_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 26
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -611,6 +675,78 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       author_ = value;
       bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object price_ = "";
+    /**
+     * <code>string price = 3;</code>
+     * @return The price.
+     */
+    public java.lang.String getPrice() {
+      java.lang.Object ref = price_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        price_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string price = 3;</code>
+     * @return The bytes for price.
+     */
+    public com.google.protobuf.ByteString
+        getPriceBytes() {
+      java.lang.Object ref = price_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        price_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string price = 3;</code>
+     * @param value The price to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPrice(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      price_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string price = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPrice() {
+      price_ = getDefaultInstance().getPrice();
+      bitField0_ = (bitField0_ & ~0x00000004);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string price = 3;</code>
+     * @param value The bytes for price to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPriceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      price_ = value;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }

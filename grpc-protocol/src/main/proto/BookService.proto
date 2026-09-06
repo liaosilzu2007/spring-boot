@@ -5,7 +5,8 @@ option java_package = "com.lzumetal.springboot.grpc.protocol";    //生成的文
 option java_outer_classname = "BookServiceProto";      //生成的外层接口文件名称（不能与内部 service/message 同名）
 option java_multiple_files = true;    //每个 message 单独生成一个 Java 文件
 
-//命名空间
+//命名空间：是 protobuf 的命名空间，用于防止不同 proto 文件中的 message 名称冲突。
+//如果 java_package 没有设置，那么 package 就作为 java_package 使用。
 //package com.lzumetal.springboot.grpc.protocol;
 
 
@@ -38,6 +39,7 @@ message BookListResponse {
 message BookAddRequest {
   string bookName = 1;
   string author = 2;
+  string price = 3;
 }
 
 message BookGetByIdRequest {

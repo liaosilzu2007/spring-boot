@@ -13,5 +13,8 @@ public interface BookDao {
 
 
 
-    Book selectById(int id);
+    Book selectById(Long id);
+
+
+
 }

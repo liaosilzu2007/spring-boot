@@ -54,26 +54,30 @@ public final class BookServiceProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\021BookService.proto\032\033google/protobuf/emp" +
-      "ty.proto\"/\n\016CommonResponse\022\014\n\004code\030\001 \001(\t" +
-      "\022\017\n\007message\030\002 \001(\t\"<\n\014BookResponse\022\n\n\002id\030" +
-      "\001 \001(\005\022\020\n\010bookName\030\002 \001(\t\022\016\n\006author\030\003 \001(\t\"" +
-      "B\n\020BookListResponse\022\037\n\010bookList\030\001 \003(\0132\r." +
-      "BookResponse\022\r\n\005total\030\002 \001(\005\"2\n\016BookAddRe" +
-      "quest\022\020\n\010bookName\030\001 \001(\t\022\016\n\006author\030\002 \001(\t\"" +
-      " \n\022BookGetByIdRequest\022\n\n\002id\030\001 \001(\005\"#\n\024Boo" +
-      "kListByIdsRequest\022\013\n\003ids\030\001 \003(\0052\330\001\n\013BookS" +
-      "ervice\022/\n\007GetById\022\023.BookGetByIdRequest\032\r" +
-      ".BookResponse\"\000\022)\n\003Add\022\017.BookAddRequest\032" +
-      "\017.CommonResponse\"\000\0226\n\007listAll\022\026.google.p" +
-      "rotobuf.Empty\032\021.BookListResponse\"\000\0225\n\tli" +
-      "stByIds\022\025.BookListByIdsRequest\032\r.BookRes" +
-      "ponse\"\0000\001B;\n%com.lzumetal.springboot.grp" +
-      "c.protocolB\020BookServiceProtoP\001b\006proto3"
+      "ty.proto\032\037google/protobuf/timestamp.prot" +
+      "o\"/\n\016CommonResponse\022\014\n\004code\030\001 \001(\t\022\017\n\007mes" +
+      "sage\030\002 \001(\t\"{\n\014BookResponse\022\n\n\002id\030\001 \001(\005\022\020" +
+      "\n\010bookName\030\002 \001(\t\022\016\n\006author\030\003 \001(\t\022\r\n\005pric" +
+      "e\030\004 \001(\t\022.\n\ncreateTime\030\005 \001(\0132\032.google.pro" +
+      "tobuf.Timestamp\"B\n\020BookListResponse\022\037\n\010b" +
+      "ookList\030\001 \003(\0132\r.BookResponse\022\r\n\005total\030\002 " +
+      "\001(\005\"A\n\016BookAddRequest\022\020\n\010bookName\030\001 \001(\t\022" +
+      "\016\n\006author\030\002 \001(\t\022\r\n\005price\030\003 \001(\t\" \n\022BookGe" +
+      "tByIdRequest\022\n\n\002id\030\001 \001(\005\"#\n\024BookListById" +
+      "sRequest\022\013\n\003ids\030\001 \003(\0052\330\001\n\013BookService\022/\n" +
+      "\007GetById\022\023.BookGetByIdRequest\032\r.BookResp" +
+      "onse\"\000\022)\n\003Add\022\017.BookAddRequest\032\017.CommonR" +
+      "esponse\"\000\0226\n\007listAll\022\026.google.protobuf.E" +
+      "mpty\032\021.BookListResponse\"\000\0225\n\tlistByIds\022\025" +
+      ".BookListByIdsRequest\032\r.BookResponse\"\0000\001" +
+      "B;\n%com.lzumetal.springboot.grpc.protoco" +
+      "lB\020BookServiceProtoP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.EmptyProto.getDescriptor(),
+          com.google.protobuf.TimestampProto.getDescriptor(),
         });
     internal_static_CommonResponse_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -86,7 +90,7 @@ public final class BookServiceProto {
     internal_static_BookResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_BookResponse_descriptor,
-        new java.lang.String[] { "Id", "BookName", "Author", });
+        new java.lang.String[] { "Id", "BookName", "Author", "Price", "CreateTime", });
     internal_static_BookListResponse_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_BookListResponse_fieldAccessorTable = new
@@ -98,7 +102,7 @@ public final class BookServiceProto {
     internal_static_BookAddRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_BookAddRequest_descriptor,
-        new java.lang.String[] { "BookName", "Author", });
+        new java.lang.String[] { "BookName", "Author", "Price", });
     internal_static_BookGetByIdRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_BookGetByIdRequest_fieldAccessorTable = new
@@ -112,6 +116,7 @@ public final class BookServiceProto {
         internal_static_BookListByIdsRequest_descriptor,
         new java.lang.String[] { "Ids", });
     com.google.protobuf.EmptyProto.getDescriptor();
+    com.google.protobuf.TimestampProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

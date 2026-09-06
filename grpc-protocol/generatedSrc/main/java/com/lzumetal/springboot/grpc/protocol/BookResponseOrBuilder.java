@@ -36,4 +36,31 @@ public interface BookResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAuthorBytes();
+
+  /**
+   * <code>string price = 4;</code>
+   * @return The price.
+   */
+  java.lang.String getPrice();
+  /**
+   * <code>string price = 4;</code>
+   * @return The bytes for price.
+   */
+  com.google.protobuf.ByteString
+      getPriceBytes();
+
+  /**
+   * <code>.google.protobuf.Timestamp createTime = 5;</code>
+   * @return Whether the createTime field is set.
+   */
+  boolean hasCreateTime();
+  /**
+   * <code>.google.protobuf.Timestamp createTime = 5;</code>
+   * @return The createTime.
+   */
+  com.google.protobuf.Timestamp getCreateTime();
+  /**
+   * <code>.google.protobuf.Timestamp createTime = 5;</code>
+   */
+  com.google.protobuf.TimestampOrBuilder getCreateTimeOrBuilder();
 }
