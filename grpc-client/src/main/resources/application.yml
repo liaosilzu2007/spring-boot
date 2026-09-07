@@ -5,6 +5,9 @@ spring:
   application:
     name: local-grpc-client
 
+logging:
+  config: classpath:logback.xml
+
 grpc:
   client:
     local-grpc-server:            # gRPC配置的名字，GrpcClient注解会用到

@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.grpc.client;
+package com.lzumetal.springboot.grpc.client.service;
 
 import com.lzumetal.springboot.grpc.protocol.BookGetByIdRequest;
 import com.lzumetal.springboot.grpc.protocol.BookResponse;

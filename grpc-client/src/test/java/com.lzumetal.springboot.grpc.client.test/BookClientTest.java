@@ -1,8 +1,8 @@
 package com.lzumetal.springboot.grpc.client.test;
 
 
-import com.lzumetal.springboot.grpc.GrpcClientApplication;
-import com.lzumetal.springboot.grpc.client.BookClient;
+import com.lzumetal.springboot.grpc.client.GrpcClientApplication;
+import com.lzumetal.springboot.grpc.client.service.BookClient;
 import com.lzumetal.springboot.grpc.protocol.BookResponse;
 import com.lzumetal.springboot.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;

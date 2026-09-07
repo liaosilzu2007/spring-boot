@@ -1,4 +1,4 @@
-package com.lzumetal.springboot.grpc;
+package com.lzumetal.springboot.grpc.client;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
