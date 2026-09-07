@@ -10,7 +10,7 @@ logging:
 
 grpc:
   client:
-    local-grpc-client:            # gRPC配置的名字，GrpcClient注解会用到，对应 @GrpcClient("local-grpc-server")
+    local-grpc-client:            # gRPC配置的名字，GrpcClient注解会用到，对应 @GrpcClient("local-grpc-client")
       # gRPC服务端地址，支持三种scheme：static（静态直连）、dns（DNS解析）、discovery（通过注册中心动态发现）
       address: 'static://127.0.0.1:9091'
       # 是否启用长连接
